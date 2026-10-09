@@ -1,0 +1,3 @@
+installed zsh, neovim-nightly-bin, sddm, mangowm, wezterm, fuzzel, helium-browser-bin, ttf-jetbrains-mono-nerd, mangobar
+
+sudo systemctl enable --now sddm
