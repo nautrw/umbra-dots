@@ -31,7 +31,9 @@ install xdg-desktop-portal-wlr, wlr-utils-bin, tesseract-data-eng
 have .config/xdg-desktop-portal-wlr/config in ~/.config
 
 ---yazi---
-install xdg-desktop-portal-termfilechooser-hunkyburrito-git
+install yazi, xdg-desktop-portal-termfilechooser-hunkyburrito-git
 
 copy .config/xdg-desktop-portal-termfilechooser/config to ~/.config
 copy .config/xdg-desktop-portal-wlr/config to ~/.config
+
+`ya pkg install` to install all packages from .config/yazi/package.toml
