@@ -17,6 +17,11 @@ rustup default stable
 git clone https://github.com/nautrw/nvim .config/nvim
 echo "open nvim next time to see changes"
 
+----------shell----------
+install zsh, zsh-fast-syntax-highlighting, eza
+
+copy .zshrc into ~/.zshrc
+
 ----------optional----------
 install v4l2loopback-dkms for virtual camera support in obs
 
