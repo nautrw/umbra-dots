@@ -1,3 +1,17 @@
-installed zsh, neovim-nightly-bin, sddm, mangowm, wezterm, fuzzel, helium-browser-bin, ttf-jetbrains-mono-nerd, mangobar
+----------rice----------
+installed sddm, mangowm, wezterm, fuzzel, ttf-jetbrains-mono-nerd, mangobar
 
 sudo systemctl enable --now sddm
+cp mango dots into ~/.config/mango
+cp mangobar dots into ~/.config/mangobar
+
+----------neovim----------
+install neovim-nightly-bin, tree-sitter, tree-sitter-cli, rustup, nodejs-n
+sudo n i latest
+rustup default stable
+
+git clone https://github.com/nautrw/nvim .config/nvim
+echo "open nvim next time to see changes"
+
+----------optional----------
+install v4l2loopback-dkms for virtual camera support in obs
