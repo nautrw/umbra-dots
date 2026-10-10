@@ -2,6 +2,9 @@
 export PATH="$HOME/.wakatime:$PATH"
 eval "$(terminal-wakatime init)"
 
+# variables
+export EDITOR=nvim
+
 # history
 export HISTFILE="$HOME/.zsh_history"
 export HISTSIZE=5000
