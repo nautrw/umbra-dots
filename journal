@@ -1,5 +1,5 @@
 ----------rice----------
-installed sddm, mangowm, wezterm, fuzzel, ttf-jetbrains-mono-nerd, mangobar
+installed sddm, mangowm, kitty, fuzzel, ttf-jetbrains-mono-nerd, mangobar
 
 sudo systemctl enable --now sddm
 cp mango dots into ~/.config/mango
