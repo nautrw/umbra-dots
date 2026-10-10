@@ -18,7 +18,7 @@ git clone https://github.com/nautrw/nvim .config/nvim
 echo "open nvim next time to see changes"
 
 ----------shell----------
-install zsh, zsh-fast-syntax-highlighting, eza, zsh-auto-venv-git
+install zsh, zsh-fast-syntax-highlighting, eza, zsh-auto-venv-git, zsh-vi-mode
 
 copy .zshrc into ~/.zshrc
 
