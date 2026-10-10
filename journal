@@ -5,6 +5,10 @@ sudo systemctl enable --now sddm
 cp mango dots into ~/.config/mango
 cp mangobar dots into ~/.config/mangobar
 
+----------fonts----------
+install ttf-roboto, ttf-roboto-slab, maplemono-nf
+copy .config/fontconfig into ~/.config/fontconfig
+
 ----------neovim----------
 install neovim-nightly-bin, tree-sitter, tree-sitter-cli, rustup, nodejs-n
 sudo n i latest
