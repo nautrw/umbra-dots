@@ -23,7 +23,15 @@ install zsh, zsh-fast-syntax-highlighting, eza, zsh-auto-venv-git, zsh-vi-mode
 copy .zshrc into ~/.zshrc
 
 ----------optional----------
+---obs---
 install v4l2loopback-dkms for virtual camera support in obs
 
+---window picker for screrenshare--
 install xdg-desktop-portal-wlr, wlr-utils-bin, tesseract-data-eng
-have .config/xdg-desktop-portal-wlr/config in ~/.config for window picker in screenshare
+have .config/xdg-desktop-portal-wlr/config in ~/.config
+
+---yazi---
+install xdg-desktop-portal-termfilechooser-hunkyburrito-git
+
+copy .config/xdg-desktop-portal-termfilechooser/config to ~/.config
+copy .config/xdg-desktop-portal-wlr/config to ~/.config
