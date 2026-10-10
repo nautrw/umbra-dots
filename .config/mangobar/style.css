@@ -15,7 +15,7 @@
 /* font-family / font-size / font-weight.
  * The config.jsonc "font" value is the fallback when CSS sets no font. */
 * {
-    font-family: "Maple Mono NF CN";
+    font-family: "sans";
     font-size: 20px;
     font-weight: bold;
 }
