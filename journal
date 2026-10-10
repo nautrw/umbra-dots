@@ -15,3 +15,6 @@ echo "open nvim next time to see changes"
 
 ----------optional----------
 install v4l2loopback-dkms for virtual camera support in obs
+
+install xdg-desktop-portal-wlr, wlr-utils-bin, tesseract-data-eng
+have .config/xdg-desktop-portal-wlr/config in ~/.config for window picker in screenshare
