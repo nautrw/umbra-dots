@@ -2,6 +2,12 @@
 export PATH="$HOME/.wakatime:$PATH"
 eval "$(terminal-wakatime init)"
 
+# history
+export HISTFILE="$HOME/.zsh_history"
+export HISTSIZE=5000
+export SAVEHIST=5000
+setopt EXTENDED_HISTORY
+
 # aliases
 alias ls="eza"
 alias rlzsh="source ~/.zshrc"
