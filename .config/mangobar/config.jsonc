@@ -22,11 +22,10 @@
         "cpu",
         "memory",
         "pulseaudio",
-        "backlight",
+        // "backlight",
         "battery",
         "clock#date",
         "clock#time",
-        "custom/power"
     ],
 
     "workspaces": {
@@ -64,7 +63,7 @@
         "format": " {}"
     },
     "cpu": {
-        "format": " {load}%",
+        "format": "  {load}%",
         // "interval": 1  // seconds; omit to use the global "sys-interval"
     },
     "memory": {
@@ -79,8 +78,8 @@
         "on-click": "brightnessctl set 1%"
     },
     "pulseaudio": {
-        "format": "{icon} {volume}% {bt}",
-        "format-muted": "󰝟 {volume}% {bt}",
+        "format": "{icon}  {volume}% {bt}",
+        "format-muted": "󰝟  {volume}% {bt}",
         "icons": ["󰝟", "󰕿", "󰕾"],
         // "icon-bluetooth": "󰂯",
         "on-click": "pamixer -t",
@@ -96,19 +95,13 @@
         // "hide-on-ac": true
     },
     "clock#date": {
-        "format": " {:L%b%d·%A}"
+        "format": "  {:L%m/%d/%Y}"
     },
     "clock#time": {
-        "format": " {:L%H:%M}"
+        "format": "  {:L%H:%M}"
     },
     "tray": {
         "icon-size": 25,
         "spacing": 10
     },
-
-    "custom/power": {
-        "format": "󰣇",
-        "on-click": "wlogout -C ~/.config/mango/wlogout/style.css -l ~/.config/mango/wlogout/layout -b 6 --protocol layer-shell",
-        "on-click-right": "sleep 0.1s && swaync-client -t -sw"
-    }
 }
