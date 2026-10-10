@@ -1,0 +1,79 @@
+add_newline = false
+command_timeout = 1000
+
+format = """
+$directory\
+$git_branch\
+$git_state\
+$git_status\
+$python\
+$cmd_duration\
+$character"""
+
+# Prompt character
+[character]
+success_symbol = "[»](bold green)"
+error_symbol = "[»](bold red)"
+vimcmd_symbol = "[](bold blue)"
+
+# Current directory
+[directory]
+format = "[$path]($style)[$read_only]($read_only_style) "
+style = "bold blue"
+read_only = " 󰌾"
+read_only_style = "red"
+truncation_length = 4
+truncate_to_repo = false
+truncation_symbol = "…/"
+
+# Git branch
+[git_branch]
+symbol = "󰘬"
+format = "[$symbol $branch]($style) "
+style = "bold bright-black"
+truncation_length = 24
+truncation_symbol = "…"
+
+# Git working tree state
+[git_state]
+format = '[\($state( $progress_current/$progress_total)\)]($style) '
+style = "bold bright-black"
+
+# Git changes
+[git_status]
+format = '([$all_status$ahead_behind]($style) )'
+style = "cyan"
+conflicted = "󰦎${count}"
+untracked = "?${count}"
+modified = "!${count}"
+staged = "+${count}"
+renamed = "»${count}"
+deleted = "✖${count}"
+stashed = "≡"
+ahead = "⇡${count}"
+behind = "⇣${count}"
+diverged = "⇕⇡${ahead_count}⇣${behind_count}"
+up_to_date = ""
+
+# Python environment
+[python]
+symbol = " "
+format = '[$symbol$version( \($virtualenv\))]($style) '
+style = "yellow"
+python_binary = ["python", "python3", "python2"]
+detect_extensions = ["py"]
+detect_files = [
+    "pyproject.toml",
+    "requirements.txt",
+    "Pipfile",
+    ".python-version",
+    "uv.lock",
+    "poetry.lock",
+]
+
+# Command execution duration
+[cmd_duration]
+min_time = 2_000
+show_milliseconds = false
+format = '[󱦟 $duration]($style) '
+style = "yellow"
