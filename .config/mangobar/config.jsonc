@@ -16,7 +16,7 @@
     "modules-right": [
         "hideclients",
         "tray",
-        "network",
+        // "network",
         // "keymode",
         // "keyboardlayout",
         "cpu",
