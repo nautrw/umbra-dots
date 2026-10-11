@@ -5,6 +5,9 @@ sudo systemctl enable --now sddm
 cp mango dots into ~/.config/mango
 cp mangobar dots into ~/.config/mangobar
 
+----------applets----------
+install blueman
+
 ----------fonts----------
 install ttf-roboto, ttf-roboto-slab, maplemono-nf, ttf-nerd-fonts-symbols
 copy .config/fontconfig into ~/.config/fontconfig
