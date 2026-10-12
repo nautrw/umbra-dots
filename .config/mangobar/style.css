@@ -3,7 +3,7 @@
 @define-color text #f6f5f4;
 
 * {
-    font-family: monospace;
+    font-family: "Symbols Nerd Font" "sans";
     font-size: 15px;
     color: @text;
     background: @normal-bg;
