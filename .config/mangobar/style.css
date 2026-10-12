@@ -1,4 +1,4 @@
-@define-color normal-bg #303030;
+@define-color normal-bg #111111;
 @define-color active-bg #3584e4;
 @define-color text #f6f5f4;
 
@@ -6,6 +6,7 @@
     font-family: "Symbols Nerd Font" "sans";
     font-size: 15px;
     color: @text;
+    font-weight: bold;
     background: @normal-bg;
     border-radius: 0px;
     padding: 0px 10px;
