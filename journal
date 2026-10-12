@@ -1,5 +1,5 @@
 ----------rice----------
-installed sddm, mangowm, kitty, fuzzel, ttf-jetbrains-mono-nerd, mangobar, wl-clipboard, grim, slurp, wlogout, xorg-xwayland, xlockmore
+installed sddm, mangowm, kitty, fuzzel, ttf-jetbrains-mono-nerd, mangobar, wl-clipboard, grim, slurp, wlogout, xorg-xwayland, xlockmore, dunst
 
 sudo systemctl enable --now sddm
 cp everything in .config to ~/.config
