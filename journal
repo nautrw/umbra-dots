@@ -1,9 +1,8 @@
 ----------rice----------
-installed sddm, mangowm, kitty, fuzzel, ttf-jetbrains-mono-nerd, mangobar, wl-clipboard, grim, slurp
+installed sddm, mangowm, kitty, fuzzel, ttf-jetbrains-mono-nerd, mangobar, wl-clipboard, grim, slurp, wlogout, xorg-xwayland, xlockmore
 
 sudo systemctl enable --now sddm
-cp mango dots into ~/.config/mango
-cp mangobar dots into ~/.config/mangobar
+cp everything in .config to ~/.config
 
 ----------applets----------
 install blueman
