@@ -1,0 +1,2 @@
+export QT_QPA_PLATFORMTHEME=qt6ct
+export GTK_USE_PORTAL=1

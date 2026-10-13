@@ -24,6 +24,19 @@ install zsh, zsh-fast-syntax-highlighting, eza, zsh-auto-venv-git, zsh-vi-mode
 
 copy .zshrc into ~/.zshrc
 
+----------app theming----------
+install glib2, kvantum, kvantum-qt5, kvantum-theme-libadwaita-git, qt6ct, qt5ct
+
+for the gtk dark mode:
+gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'\
+gsettings set org.gnome.desktop.interface gtk-theme 'adw-gtk3-dark'\
+gsettings set org.gnome.desktop.interface icon-theme 'Adwaita'
+
+qt dark mode & libadwaita look:
+kvantummanager --set KvLibadwaitaDark
+copy .config/qt6ct into ~/.config/qt6ct
+make sure `export QT_QPA_PLATFORMTHEME=qt6ct` is in ~/.zprofile
+
 ----------optional----------
 ---obs---
 install v4l2loopback-dkms for virtual camera support in obs
