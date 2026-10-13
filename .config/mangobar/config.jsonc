@@ -83,7 +83,7 @@
         "format-muted": "󰝟  {volume}% {bt}",
         "icons": ["󰝟", "󰕿", "󰕾"],
         // "icon-bluetooth": "󰂯",
-        "on-click": "pamixer -t",
+        "on-click": "pavucontrol",
         "on-scroll-up": "pamixer -i 2",
         "on-scroll-down": "pamixer -d 2"
     },
