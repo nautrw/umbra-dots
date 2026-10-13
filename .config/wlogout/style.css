@@ -1,3 +1,7 @@
+@define-color normal-bg #111111;
+@define-color active-bg #3584e4;
+@define-color text #f6f5f4;
+
 * {
 	background-image: none;
 	box-shadow: none;
@@ -10,9 +14,9 @@ window {
 button {
     border-radius: 0;
     border-color: black;
-	text-decoration-color: #FFFFFF;
-    color: #FFFFFF;
-	background-color: #1E1E1E;
+	text-decoration-color: @text;
+    color: @text;
+	background-color: @normal-bg;
 	border-style: solid;
 	border-width: 1px;
 	background-repeat: no-repeat;
@@ -21,7 +25,7 @@ button {
 }
 
 button:focus, button:active, button:hover {
-	background-color: #3700B3;
+	background-color: @active-bg;
 	outline-style: none;
 }
 
