@@ -619,7 +619,7 @@ exit
 💮 white flower japanese spring
 🏵️ rosette flower decoration military
 🌹 rose flowers valentines love spring
-🥀 wilted flower plant nature flower
+🥀 wilted flower plant nature flower wilted rose
 🌺 hibiscus plant vegetable flowers beach
 🌻 sunflower nature plant fall
 🌼 blossom nature flowers yellow
@@ -1571,7 +1571,7 @@ exit
 🇩🇯 flag djibouti dj flag nation country banner djibouti
 🇩🇰 flag denmark dk flag nation country banner denmark
 🇩🇲 flag dominica dm flag nation country banner dominica
-🇩🇴 flag dominican republic dominican republic flag nation country banner dominican republic
+🇩🇴 flag dominican republic dominican republic flag nation country banner dominican republic dr flag
 🇩🇿 flag algeria dz flag nation country banner algeria
 🇪🇦 flag ceuta melilla
 🇪🇨 flag ecuador ec flag nation country banner ecuador
@@ -1748,7 +1748,7 @@ exit
 🇺🇬 flag uganda ug flag nation country banner uganda
 🇺🇲 flag u s outlying islands
 🇺🇳 flag united nations un flag banner
-🇺🇸 flag united states united states america flag nation country banner united states
+🇺🇸 flag united states united states america flag nation country banner united states usa us flag
 🇺🇾 flag uruguay uy flag nation country banner uruguay
 🇺🇿 flag uzbekistan uz flag nation country banner uzbekistan
 🇻🇦 flag vatican city vatican city flag nation country banner vatican city
@@ -1881,17 +1881,233 @@ exit
 🫧 bubbles soap fun carbonation sparkling
 🪪 identification card document
 🟰 heavy equals sign math
-¿? question upside down reversed spanish
 ← left arrow
 ↑ up arrow
 → right arrow
 ↓ down arrow
 ←↑→↓ all directions up down left right arrows
-AH↗️HA↘️HA↗️HA↘️HA↗️HA↘️HA↗️HA↘️ pekora arrows hahaha rabbit
 • dot circle separator
 「」 japanese quote square bracket
-¯\_(ツ)_/¯ shrug idk i dont know
+¯\_(ツ)_/¯ shrug
 ↵ enter key return
 𝕏  twitter x logo
-👉👈 etou ughhhhhhh shy
-👉👌 put it in imagination perv
+Ññ enye letter spanish
+¿? question upside down reversed spanish
+Α uppercase alpha greek alphabet science physics math
+Β uppercase beta greek alphabet science physics math
+Γ uppercase gamma greek alphabet science physics math
+Δ uppercase delta greek alphabet change difference science physics math
+Ε uppercase epsilon greek alphabet science math
+Ζ uppercase zeta greek alphabet science math
+Η uppercase eta greek alphabet science math
+Θ uppercase theta greek alphabet angle science physics math
+Ι uppercase iota greek alphabet science math
+Κ uppercase kappa greek alphabet science math
+Λ uppercase lambda greek alphabet wavelength science physics
+Μ uppercase mu greek alphabet micro coefficient science physics
+Ν uppercase nu greek alphabet frequency science physics
+Ξ uppercase xi greek alphabet science math
+Ο uppercase omicron greek alphabet science math
+Π uppercase pi greek alphabet product science math
+Ρ uppercase rho greek alphabet density resistivity physics
+Σ uppercase sigma greek alphabet sum stress science math
+Τ uppercase tau greek alphabet time torque physics
+Υ uppercase upsilon greek alphabet science math
+Φ uppercase phi greek alphabet flux angle physics
+Χ uppercase chi greek alphabet statistics science math
+Ψ uppercase psi greek alphabet wavefunction quantum physics
+Ω uppercase omega greek alphabet ohm resistance angular frequency physics
+α lowercase alpha greek alphabet angle physics math
+β lowercase beta greek alphabet coefficient particle physics
+γ lowercase gamma greek alphabet radiation relativity physics
+δ lowercase delta greek alphabet change difference calculus
+ε lowercase epsilon greek alphabet permittivity error math physics
+ζ lowercase zeta greek alphabet damping physics math
+η lowercase eta greek alphabet efficiency viscosity physics
+θ lowercase theta greek alphabet angle trigonometry physics
+ι lowercase iota greek alphabet math
+κ lowercase kappa greek alphabet thermal conductivity physics
+λ lowercase lambda greek alphabet wavelength decay constant physics
+μ lowercase mu greek alphabet micro prefix friction physics
+ν lowercase nu greek alphabet frequency neutrino physics
+ξ lowercase xi greek alphabet random variable math
+ο lowercase omicron greek alphabet math
+π lowercase pi greek alphabet circumference circle math
+ρ lowercase rho greek alphabet density resistivity physics
+σ lowercase sigma greek alphabet standard deviation stress physics
+ς lowercase final sigma greek alphabet
+τ lowercase tau greek alphabet time constant torque physics
+υ lowercase upsilon greek alphabet math
+φ lowercase phi greek alphabet golden ratio phase physics
+ϕ phi variant greek alphabet physics math
+χ lowercase chi greek alphabet chi squared statistics
+ψ lowercase psi greek alphabet wavefunction quantum mechanics
+ω lowercase omega greek alphabet angular frequency physics
+ϵ epsilon variant greek alphabet math physics
+ϑ theta variant greek alphabet math physics
+ϱ rho variant greek alphabet math physics
+ϖ pi variant greek alphabet math physics
+ϰ kappa variant greek alphabet math physics
+ϕ phi variant greek alphabet math physics
+Ϝ digamma greek alphabet archaic mathematics
+ϝ lowercase digamma greek alphabet archaic mathematics
+° degree angle temperature celsius geometry
+℃ degrees celsius temperature science
+℉ degrees fahrenheit temperature
+K kelvin temperature absolute science
+µ micro prefix metric units science
+Å angstrom atomic scale wavelength physics
+Å angstrom alternate symbol chemistry physics
+ℏ reduced planck constant quantum mechanics physics
+ħ reduced planck constant quantum physics
+ℎ planck constant quantum physics
+ℯ eulers number mathematics exponential
+ⅈ imaginary unit complex numbers math
+∞ infinity limit calculus mathematics
+∝ proportional to proportionality physics math
+≈ approximately equal estimate science math
+≃ asymptotically equal equivalent math
+≅ congruent approximately equal geometry math
+≡ equivalent identity congruence math
+≠ not equal inequality math
+≤ less than or equal inequality math
+≥ greater than or equal inequality math
+≪ much less than inequality math
+≫ much greater than inequality math
+± plus minus uncertainty error measurement
+∓ minus plus mathematics
+× multiplication times product math
+· middle dot multiplication dot product physics math
+⋅ dot product multiplication vector physics
+÷ division divide math
+⁄ fraction slash division math
+√ square root radical math
+∛ cube root radical math
+∜ fourth root radical math
+∑ summation sigma series mathematics
+∏ product pi mathematics
+∐ coproduct mathematics
+∫ integral calculus area physics
+∬ double integral calculus volume
+∭ triple integral calculus volume
+∮ contour integral complex analysis
+∯ surface integral vector calculus
+∰ volume integral mathematics
+∂ partial derivative calculus physics
+∇ nabla gradient divergence curl physics
+∆ increment triangle delta geometry
+∇² laplacian differential equations physics
+′ prime derivative arcminutes
+″ double prime second derivative arcseconds
+‴ triple prime higher derivative
+∴ therefore logic mathematics
+∵ because logic mathematics
+∎ end of proof qed mathematics
+∀ for all universal quantifier logic
+∃ there exists existential quantifier logic
+∄ there does not exist logic
+∈ element of set membership mathematics
+∉ not an element of set theory
+∋ contains as member set theory
+⊂ subset set theory
+⊃ superset set theory
+⊆ subset or equal set theory
+⊇ superset or equal set theory
+∪ union set theory
+∩ intersection set theory
+∅ empty set null set mathematics
+ℝ real numbers number set
+ℤ integers number set
+ℕ natural numbers number set
+ℚ rational numbers number set
+ℂ complex numbers number set
+℘ power set mathematics
+⊕ direct sum xor mathematics
+⊗ tensor product mathematics physics
+⊙ circled dot product mathematics
+⊥ perpendicular orthogonal geometry physics
+∥ parallel geometry physics
+∠ angle geometry
+∡ measured angle geometry
+∟ right angle geometry
+△ triangle geometry
+≔ defined as definition mathematics
+≜ defined as equivalent mathematics
+∘ function composition operator mathematics
+⟨ left angle bracket bra quantum physics
+⟩ right angle bracket ket quantum physics
+⟷ bidirectional arrow reversible reaction equilibrium
+⇌ chemical equilibrium reversible reaction chemistry
+→ reaction arrow implication direction
+⟶ long right arrow reaction mechanism
+↔ equilibrium reversible reaction chemistry
+⇒ implies logical implication
+⇔ if and only if equivalence logic
+↦ maps to function mapping math
+⟹ long implies mathematical proof
+⟺ long equivalence logic
+⊢ proves entails logic
+⊨ models satisfies logic
+⊢ logical entailment proof
+∼ similar distributed as statistics
+≔ assignment defined as math
+:= defined as programming mathematics
+| absolute value divides probability
+‖ norm magnitude vector mathematics
+⌊ floor function rounding math
+⌋ floor function closing bracket math
+⌈ ceiling function rounding math
+⌉ ceiling function closing bracket math
+⟦ double square bracket semantics math
+⟧ double square bracket semantics math
+⟨ inner product quantum mechanics
+⟩ inner product quantum mechanics
+∣ such that divides probability
+∧ logical and conjunction
+∨ logical or disjunction
+¬ logical not negation
+⊻ exclusive or xor logic
+⊼ nand logic
+⊽ nor logic
+⊤ true tautology logic
+⊥ false contradiction logic
+∎ proof end qed
+… ellipsis sequence continuation
+⋯ centered ellipsis mathematics
+⋮ vertical ellipsis matrix
+⋱ diagonal ellipsis matrix
+∘ composition function operator
+⨉ n ary multiplication mathematics
+∶ ratio such that mathematics
+∷ proportion mathematics
+∝ proportional mathematics physics
+∤ does not divide number theory
+∣ divides number theory
+⌁ wavy line relation math
+≺ precedes order theory
+≻ succeeds order theory
+≼ precedes or equals order theory
+≽ succeeds or equals order theory
+⊆ subset set theory
+⊈ not subset set theory
+⊊ proper subset set theory
+⊇ superset set theory
+⊉ not superset set theory
+⊋ proper superset set theory
+↗ northeast arrow graph direction
+↘ southeast arrow graph direction
+↙ southwest arrow graph direction
+↖ northwest arrow graph direction
+⤴ curve up arrow
+⤵ curve down arrow
+⟺ iff equivalence logic
+⟵ long left arrow mathematics
+⟷ long left right arrow mathematics
+⟹ long right arrow implication
+⟸ long left arrow implication
+⟺ long iff arrow equivalence
+⤳ squiggly arrow mapping mathematics
+↦ maps to function mathematics
+↪ injection mapping mathematics
+↠ surjection mapping mathematics
+⤻ clockwise loop arrow mathematics
