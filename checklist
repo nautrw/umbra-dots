@@ -65,26 +65,22 @@
 [x] File chooser behavior
 [x] Clipboard history manager
 [x] Emoji picker
-[ ] Application-specific launch shortcuts
-[ ] Window switcher
-[ ] Run-command workflow
+[x] Window switcher
 
 6. Notifications & quick controls
-[ ] Notification daemon (Dunst or Mako)
-[ ] Dark notification theme
-[ ] Notification grouping and stacking
-[ ] Urgency levels and timeouts
-[ ] Do-not-disturb toggle
-[ ] Notification history (optional)
-[ ] Audio control applet
-[ ] Brightness control
-[ ] Network connection menu
-[ ] Bluetooth device controls
-[ ] Battery and power profiles
-[ ] System tray applets
+[x] Notification daemon (Dunst or Mako)
+[x] Dark notification theme
+[x] Notification grouping and stacking
+[x] Urgency levels and timeouts
+[x] Do-not-disturb toggle
+[x] Notification history (optional)
+[x] Audio control applet
+[x] Network connection menu
+[x] Bluetooth device controls
+[x] System tray applets
 
 7. Audio, media & peripherals
-[ ] PipeWire and WirePlumber
+[x] PipeWire and WirePlumber
 [ ] Volume keys and mute toggle
 [ ] Audio output/input selector
 [ ] Microphone mute shortcut
