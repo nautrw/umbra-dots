@@ -27,5 +27,10 @@ source /usr/share/zsh/plugins/fast-syntax-highlighting/fast-syntax-highlighting.
 source /usr/share/zsh/plugins/zsh-auto-venv/auto-venv.plugin.zsh
 source /usr/share/zsh/plugins/zsh-vi-mode/zsh-vi-mode.plugin.zsh
 
+function zvm_vi_yank() {
+    zvm_yank
+    print -rn -- "$CUTBUFFER" | wl-copy
+}
+
 # starship
 eval "$(starship init zsh)"

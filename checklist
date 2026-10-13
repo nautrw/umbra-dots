@@ -52,7 +52,7 @@
 [x] Autosuggestions and command completion
 [x] Aliases and useful functions
 [x] Directory navigation tools
-[ ] Clipboard integration
+[x] Clipboard integration
 [ ] Terminal color scheme
 [ ] Terminal padding, cursor, and font
 [ ] Shell startup performance
