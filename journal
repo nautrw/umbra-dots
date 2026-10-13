@@ -5,7 +5,7 @@ sudo systemctl enable --now sddm
 cp everything in .config to ~/.config
 
 ----------applets----------
-install blueman
+install blueman, network-manager-applet
 
 ----------fonts----------
 install ttf-roboto, ttf-roboto-slab, maplemono-nf, ttf-nerd-fonts-symbols
