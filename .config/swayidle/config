@@ -1,0 +1,3 @@
+timeout 300 'sh ~/.config/mango/scripts/lock.sh &'
+timeout 600 'systemctl suspend'
+after-resume 'mmsg dispatch wakeup_monitor,DP-2; mmsg dispatch wakeup_monitor,HDMI-A-1'
