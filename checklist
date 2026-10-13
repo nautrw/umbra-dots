@@ -63,8 +63,8 @@
 [x] Default applications for files, URLs, and media
 [x] File manager theme and shortcuts
 [x] File chooser behavior
-[ ] Clipboard history manager
-[ ] Emoji picker
+[x] Clipboard history manager
+[x] Emoji picker
 [ ] Application-specific launch shortcuts
 [ ] Window switcher
 [ ] Run-command workflow
