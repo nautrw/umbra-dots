@@ -2,7 +2,8 @@
 export PATH="$HOME/.wakatime:$PATH"
 eval "$(terminal-wakatime init)"
 
-# variables
+# misc. variables
+export PATH="$PATH:/home/$USER/.local/bin"
 export EDITOR=nvim
 
 # keybinds
@@ -15,6 +16,7 @@ export HISTFILE="$HOME/.zsh_history"
 export HISTSIZE=5000
 export SAVEHIST=5000
 setopt EXTENDED_HISTORY
+setopt SHARE_HISTORY
 
 # aliases
 alias ls="eza"
