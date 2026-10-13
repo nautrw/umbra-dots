@@ -5,6 +5,11 @@ eval "$(terminal-wakatime init)"
 # variables
 export EDITOR=nvim
 
+# keybinds
+bindkey '^[[1;5D' backward-word # ctrl+left
+bindkey '^[[1;5C' forward-word # ctrl+right
+bindkey '^H' backward-kill-word # ctrl+backspace
+
 # history
 export HISTFILE="$HOME/.zsh_history"
 export HISTSIZE=5000
