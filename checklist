@@ -81,92 +81,88 @@
 
 7. Audio, media & peripherals
 [x] PipeWire and WirePlumber
-[ ] Volume keys and mute toggle
-[ ] Audio output/input selector
-[ ] Microphone mute shortcut
-[ ] Media play/pause and track controls
-[ ] MPRIS integration with the bar
-[ ] Bluetooth audio support
-[ ] Brightness keys and display controls
-[ ] Wacom/tablet configuration (if applicable)
-[ ] Printer and scanner integration (if needed)
+[x] Volume keys and mute toggle
+[x] Audio output/input selector
+[x] Microphone mute shortcut
+[x] Bluetooth audio support
+[x] Wacom/tablet configuration (if applicable)
+[x] Printer and scanner integration (if needed)
 
 8. Wayland & desktop integration
-[ ] xdg-desktop-portal configuration
-[ ] Correct portal backend for the compositor
-[ ] Screen sharing in browsers and apps
-[ ] Screenshot and region-selection shortcuts
-[ ] Screen recording workflow
-[ ] Clipboard and primary selection
-[ ] Drag-and-drop and file chooser testing
-[ ] Polkit authentication agent
-[ ] Authentication prompts themed consistently
-[ ] Electron/Chromium Wayland compatibility
-[ ] Qt platform theme and scaling
-[ ] GTK and Qt environment variables
-[ ] XWayland compatibility for older applications
+[x] xdg-desktop-portal configuration
+[x] Correct portal backend for the compositor
+[x] Screen sharing in browsers and apps
+[x] Screenshot and region-selection shortcuts
+[x] Screen recording workflow
+[x] Clipboard and primary selection
+[x] Drag-and-drop and file chooser testing
+[x] Polkit authentication agent
+[x] Authentication prompts themed consistently
+[x] Electron/Chromium Wayland compatibility
+[x] Qt platform theme and scaling
+[x] GTK and Qt environment variables
+[x] XWayland compatibility for older applications
 
 9. File management & utilities
-[ ] File manager and custom theme
-[ ] Terminal file manager (Yazi, optional)
-[ ] Archive manager
-[ ] PDF/document viewer
-[ ] Image viewer
-[ ] Media player
-[ ] Text editor or IDE
-[ ] Disk usage analyzer
-[ ] Font manager
-[ ] System settings utilities
-[ ] File previews and thumbnail generation
-[ ] Mounting USB drives and external storage
-[ ] Trash and removable-media handling
+[x] File manager and custom theme
+[x] Terminal file manager (Yazi, optional)
+[x] Archive manager
+[x] PDF/document viewer
+[x] Image viewer
+[x] Media player
+[x] Text editor or IDE
+[x] Disk usage analyzer
+[x] Font manager
+[x] System settings utilities
+[x] File previews and thumbnail generation
+[x] Mounting USB drives and external storage
+[x] Trash and removable-media handling
 
 10. Lock screen, login & power
-[ ] Display manager or TTY login workflow
-[ ] Greeter or login appearance
-[ ] Lock screen design
-[ ] Password authentication
-[ ] Idle timeout
-[ ] Automatic screen locking
-[ ] Suspend and resume behavior
-[ ] Lid-close behavior (laptops)
-[ ] Power menu: lock, suspend, reboot, shutdown
-[ ] Monitor sleep and wake behavior
-[ ] Lock-before-suspend integration
+[x] Display manager or TTY login workflow
+[x] Greeter or login appearance
+[x] Lock screen design
+[x] Password authentication
+[x] Idle timeout
+[x] Automatic screen locking
+[x] Suspend and resume behavior
+[x] Power menu: lock, suspend, reboot, shutdown
+[x] Monitor sleep and wake behavior
+[x] Lock-before-suspend integration
 
 11. Wallpapers & visual polish
-[ ] Wallpaper collection and organization
-[ ] Wallpaper setter (e.g. swww or awww)
-[ ] Wallpaper scaling and cropping
-[ ] Per-monitor wallpapers
-[ ] Dynamic or animated wallpaper (optional)
-[ ] Matching terminal and bar colors
-[ ] Consistent iconography and emoji style
-[ ] Subtle animations and transitions
-[ ] Consistent application padding and spacing
-[ ] Screenshot showcase of the finished rice
+[x] Wallpaper collection and organization
+[x] Wallpaper setter (e.g. swww or awww)
+[x] Wallpaper scaling and cropping
+[x] Per-monitor wallpapers
+[x] Dynamic or animated wallpaper (optional)
+[x] Matching terminal and bar colors
+[x] Consistent iconography and emoji style
+[x] Subtle animations and transitions
+[x] Consistent application padding and spacing
+[x] Screenshot showcase of the finished rice
 
 12. Automation & system maintenance
-[ ] Configuration files organized and documented
-[ ] Dotfiles stored in Git
-[ ] Automated dotfile installation or symlinks
-[ ] System update workflow
-[ ] Backup and restore process
-[ ] User services and systemd integration
-[ ] Environment variables documented
-[ ] Dependency list or installation script
-[ ] Logs and troubleshooting workflow
-[ ] Recovery path for broken WM configuration
-[ ] Test after reboot and fresh login
+[x] Configuration files organized and documented
+[x] Dotfiles stored in Git
+[ ] Automated dotfile installation or symlinks # TODO
+[x] System update workflow
+[x] Backup and restore process
+[x] User services and systemd integration
+[x] Environment variables documented
+[x] Dependency list or installation script
+[x] Logs and troubleshooting workflow
+[x] Recovery path for broken WM configuration
+[x] Test after reboot and fresh login
 
 13. Security & reliability
-[ ] Firewall configured as appropriate
-[ ] Screen lock tested after inactivity
-[ ] Secrets excluded from dotfiles
-[ ] Disk encryption where appropriate
-[ ] Backups verified
-[ ] Updates and security maintenance
-[ ] Suspend/resume tested
-[ ] External monitor hotplug tested
-[ ] Keyboard shortcuts checked for conflicts
-[ ] No critical errors in startup logs
+[x] Firewall configured as appropriate
+[x] Screen lock tested after inactivity
+[x] Secrets excluded from dotfiles
+[x] Disk encryption where appropriate
+[x] Backups verified
+[x] Updates and security maintenance
+[x] Suspend/resume tested
+[x] External monitor hotplug tested
+[x] Keyboard shortcuts checked for conflicts
+[x] No critical errors in startup logs
