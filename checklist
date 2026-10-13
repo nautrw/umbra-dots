@@ -53,21 +53,18 @@
 [x] Aliases and useful functions
 [x] Directory navigation tools
 [x] Clipboard integration
-[ ] Terminal color scheme
-[ ] Terminal padding, cursor, and font
-[ ] Shell startup performance
-[ ] Man-page and pager styling
+[x] Terminal color scheme
+[x] Terminal padding, cursor, and font
+[x] Shell startup performance
 
 5. Launcher & application workflow
-[ ] Application launcher (Fuzzel)
-[ ] Application search and desktop entries
-[ ] Custom keybindings for common applications
-[ ] Default applications for files, URLs, and media
-[ ] File manager theme and shortcuts
-[ ] File chooser behavior
+[x] Application launcher (Fuzzel)
+[x] Application search and desktop entries
+[x] Default applications for files, URLs, and media
+[x] File manager theme and shortcuts
+[x] File chooser behavior
 [ ] Clipboard history manager
 [ ] Emoji picker
-[ ] Calculator launcher
 [ ] Application-specific launch shortcuts
 [ ] Window switcher
 [ ] Run-command workflow
