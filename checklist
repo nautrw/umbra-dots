@@ -1,0 +1,179 @@
+1. Window manager & desktop
+[x] Window manager configured (MangoWC)
+[x] Monitor layouts, resolution, and scaling
+[x] Workspace navigation and switching
+[x] Window movement, resizing, and focus rules
+[x] Tiling, floating, and fullscreen behavior
+[x] Gaps, borders, corner radius, and animations
+[x] Window rules for specific applications
+[x] Keyboard shortcuts and modifier-key scheme
+[x] Reload configuration without logging out
+[x] Startup applications and autostart
+[x] Multi-monitor workspace behavior
+[x] Scratchpads or dropdown terminal
+[x] Lock screen and idle locking
+
+2. Top bar & system information
+[x] Status bar layout and spacing
+[x] Workspace indicators (GNOME-style dots)
+[x] Focused window title or application indicator
+[x] Clock and date
+[x] System tray icons
+[x] Network status
+[x] Audio volume indicator
+[x] Battery indicator (if applicable)
+[x] CPU and RAM usage (optional)
+[x] Media playback controls
+[x] Notifications indicator
+[x] Power menu and session controls
+
+3. Visual identity & theming
+[x] Color palette and design guidelines
+[x] GTK 3 theme
+[x] GTK 4 / libadwaita theme
+[x] Qt 5 theme
+[x] Qt 6 theme
+[x] Consistent icon theme
+[x] Cursor theme and size
+[x] System font and font weights
+[x] Monospace font and Nerd Font icons
+[x] Font rendering and antialiasing
+[x] Dark mode and color-scheme preference
+[x] Wallpaper and wallpaper transitions
+[x] Application-specific theme fixes
+[x] Consistent borders, shadows, and opacity
+[x] Screenshots and reference mood board
+
+4. Terminal & shell
+[x] Terminal emulator configuration (Kitty)
+[x] Shell configuration (Bash, Zsh, or Fish)
+[x] Prompt theme (Starship or equivalent)
+[x] Syntax highlighting
+[x] Autosuggestions and command completion
+[x] Aliases and useful functions
+[x] Directory navigation tools
+[ ] Clipboard integration
+[ ] Terminal color scheme
+[ ] Terminal padding, cursor, and font
+[ ] Shell startup performance
+[ ] Man-page and pager styling
+
+5. Launcher & application workflow
+[ ] Application launcher (Fuzzel)
+[ ] Application search and desktop entries
+[ ] Custom keybindings for common applications
+[ ] Default applications for files, URLs, and media
+[ ] File manager theme and shortcuts
+[ ] File chooser behavior
+[ ] Clipboard history manager
+[ ] Emoji picker
+[ ] Calculator launcher
+[ ] Application-specific launch shortcuts
+[ ] Window switcher
+[ ] Run-command workflow
+
+6. Notifications & quick controls
+[ ] Notification daemon (Dunst or Mako)
+[ ] Dark notification theme
+[ ] Notification grouping and stacking
+[ ] Urgency levels and timeouts
+[ ] Do-not-disturb toggle
+[ ] Notification history (optional)
+[ ] Audio control applet
+[ ] Brightness control
+[ ] Network connection menu
+[ ] Bluetooth device controls
+[ ] Battery and power profiles
+[ ] System tray applets
+
+7. Audio, media & peripherals
+[ ] PipeWire and WirePlumber
+[ ] Volume keys and mute toggle
+[ ] Audio output/input selector
+[ ] Microphone mute shortcut
+[ ] Media play/pause and track controls
+[ ] MPRIS integration with the bar
+[ ] Bluetooth audio support
+[ ] Brightness keys and display controls
+[ ] Wacom/tablet configuration (if applicable)
+[ ] Printer and scanner integration (if needed)
+
+8. Wayland & desktop integration
+[ ] xdg-desktop-portal configuration
+[ ] Correct portal backend for the compositor
+[ ] Screen sharing in browsers and apps
+[ ] Screenshot and region-selection shortcuts
+[ ] Screen recording workflow
+[ ] Clipboard and primary selection
+[ ] Drag-and-drop and file chooser testing
+[ ] Polkit authentication agent
+[ ] Authentication prompts themed consistently
+[ ] Electron/Chromium Wayland compatibility
+[ ] Qt platform theme and scaling
+[ ] GTK and Qt environment variables
+[ ] XWayland compatibility for older applications
+
+9. File management & utilities
+[ ] File manager and custom theme
+[ ] Terminal file manager (Yazi, optional)
+[ ] Archive manager
+[ ] PDF/document viewer
+[ ] Image viewer
+[ ] Media player
+[ ] Text editor or IDE
+[ ] Disk usage analyzer
+[ ] Font manager
+[ ] System settings utilities
+[ ] File previews and thumbnail generation
+[ ] Mounting USB drives and external storage
+[ ] Trash and removable-media handling
+
+10. Lock screen, login & power
+[ ] Display manager or TTY login workflow
+[ ] Greeter or login appearance
+[ ] Lock screen design
+[ ] Password authentication
+[ ] Idle timeout
+[ ] Automatic screen locking
+[ ] Suspend and resume behavior
+[ ] Lid-close behavior (laptops)
+[ ] Power menu: lock, suspend, reboot, shutdown
+[ ] Monitor sleep and wake behavior
+[ ] Lock-before-suspend integration
+
+11. Wallpapers & visual polish
+[ ] Wallpaper collection and organization
+[ ] Wallpaper setter (e.g. swww or awww)
+[ ] Wallpaper scaling and cropping
+[ ] Per-monitor wallpapers
+[ ] Dynamic or animated wallpaper (optional)
+[ ] Matching terminal and bar colors
+[ ] Consistent iconography and emoji style
+[ ] Subtle animations and transitions
+[ ] Consistent application padding and spacing
+[ ] Screenshot showcase of the finished rice
+
+12. Automation & system maintenance
+[ ] Configuration files organized and documented
+[ ] Dotfiles stored in Git
+[ ] Automated dotfile installation or symlinks
+[ ] System update workflow
+[ ] Backup and restore process
+[ ] User services and systemd integration
+[ ] Environment variables documented
+[ ] Dependency list or installation script
+[ ] Logs and troubleshooting workflow
+[ ] Recovery path for broken WM configuration
+[ ] Test after reboot and fresh login
+
+13. Security & reliability
+[ ] Firewall configured as appropriate
+[ ] Screen lock tested after inactivity
+[ ] Secrets excluded from dotfiles
+[ ] Disk encryption where appropriate
+[ ] Backups verified
+[ ] Updates and security maintenance
+[ ] Suspend/resume tested
+[ ] External monitor hotplug tested
+[ ] Keyboard shortcuts checked for conflicts
+[ ] No critical errors in startup logs
