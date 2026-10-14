@@ -42,6 +42,7 @@
     },
     "window": {
         "format": "{}",
+        "max-length": 600,
         "on-click": "bash ~/.config/mango/scripts/screenshot.sh",
         "on-click-right": "python /home/wrq/tool/ocr.py"
     },
