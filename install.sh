@@ -206,7 +206,23 @@ install_app_theming () {
 
     echo "Setting QT app theming to LibAdwaita..."
 
-    if ! kvantummanager --set KvLibadwaitaDark; then
+    local kvantum_config="$HOME/.config/Kvantum/kvantum.kvconfig"
+
+    if ! mkdir -p "${kvantum_config%/*}"; then
+        echo "Failed to create Kvantum configuration directory." >&2
+        return 1
+    fi
+
+    # if ! kvantummanager --set KvLibadwaitaDark; then
+    #     echo "Failed to set Kvantum Manager theme to Adwaita Dark." >&2
+    #     return 1
+    # fi
+
+    if ! cat > "$kvantum_config" <<'EOF'
+[General]
+theme=KvLibadwaitaDark
+EOF
+    then
         echo "Failed to set Kvantum Manager theme to Adwaita Dark." >&2
         return 1
     fi
