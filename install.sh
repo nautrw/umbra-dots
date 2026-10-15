@@ -108,7 +108,8 @@ install_shell_config () {
         zsh-fast-syntax-highlighting \
         zsh-vi-mode \
         zsh-auto-venv-git \
-        eza; then
+        eza \
+        starship; then
         echo "Failed to install Zsh packages." >&2
         return 1
     fi
