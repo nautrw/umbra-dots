@@ -31,7 +31,7 @@
 
     "workspaces": {
         "hide-empty": true,
-        // "pinned": [1, 2],
+        "pinned": [1, 2, 3, 4, 5, 6, 7, 8, 9],
         // "tag-names": ["1", "2", "3", "编", "网"],
         "overview-label": "OVERVIEW",
         "on-click": "activate",
