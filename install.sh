@@ -264,6 +264,15 @@ install_optionals () {
     fi
 }
 
+# using () instead of {} runs in a subshell, so all directory changes are isolatedl;
+# don't have to cd back when done
+install_paru () (
+    local tmpdir="$(mktemp -d)" || return 1
+    git clone https://aur.archlinux.org/paru.git "$tmpdir/paru" || return 1
+    cd "$tmpdir/paru" || return 1
+    makepkg -si || return 1
+)
+
 if ! sudo -n true 2>/dev/null; then
     echo "No sudo access, prompting..."
 
@@ -271,6 +280,15 @@ if ! sudo -n true 2>/dev/null; then
         echo "Error: no sudo authentication." >&2
         exit 1
     fi
+fi
+
+if ! command -v paru; then
+    if ! confirm_prompt "Paru is required for this installation script. Install it?"; then
+        echo "Paru is required. Exiting." >&2
+        exit 1
+    fi
+
+    run_catch_error install_paru
 fi
 
 echo "1. Full dotfiles (Rice, ZSH, Neovim, NetworkManager & Applet, Bluetooth & Applet, Optionals)"
