@@ -31,7 +31,7 @@ install_core () {
         grim slurp wlogout xorg-xwayland xlockmore \
         dunst swayidle copyq wtype ttf-roboto \
         ttf-roboto-slab maplemono-nf \
-        ttf-nerd-font-symbols; then
+        ttf-nerd-fonts-symbols; then
         echo "Failed to install core packages." >&2
         return 1
     fi
