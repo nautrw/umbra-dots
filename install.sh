@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+set -o pipefail
+
 SCRIPT_DIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
 
 confirm_prompt () {
@@ -14,6 +16,13 @@ confirm_prompt () {
     # =~ is for regex match
     # this will already return 0 if true or 1 if not true
     [[ $REPLY =~ ^[Yy]$ ]]
+}
+
+run_catch_error () {
+    if ! "$@"; then
+        echo "Error: Installation failed: $@" >&2
+        exit 1
+    fi
 }
 
 install_core () {
@@ -104,6 +113,12 @@ install_shell_config () {
         return 1
     fi
 
+    if [[ -e "$HOME/.zshrc" ]]; then
+        echo "ZSH configuration already exists at $HOME/.zshrc." >&2
+        echo "Move it before installing this configuration." >&@
+        return 1
+    fi
+
     if ! cp "$SCRIPT_DIR/.zshrc" "$HOME/.zshrc"; then
         echo "Failed to copy Zsh configuration." >&2
         return 1
@@ -156,6 +171,12 @@ install_neovim_config () {
 install_app_theming () {
     echo "Installing and setting app theming..."
 
+    if [[ -e "$HOME/.config/qt6ct" ]]; then
+        echo "Error: Qt6ct configuration already exists at $HOME/.config/qt6ct." >&2
+        echo "Move it before installing this configuration." >&@
+        return 1
+    fi
+
     if ! paru -S --needed glib2 \
         kvantum \
         kvantum-qt5 \
@@ -191,11 +212,15 @@ install_app_theming () {
     fi
 
     if ! cp -r "$SCRIPT_DIR/.config/qt6ct" "$HOME/.config"; then
-        echo "Failed to copy qt6ct configuration into $HOME/.config/qt6ct."
+        echo "Failed to copy qt6ct configuration into $HOME/.config/qt6ct." >&2
         return 1
     fi
 
-    touch "$HOME/.zprofile"
+    if ! touch "$HOME/.zprofile"; then
+        echo "Failed to create $HOME/.zprofile" >&2
+        return 1
+    fi
+
     # grep checks if the line already exists
     if ! grep -qxF 'export QT_QPA_PLATFORMTHEME=qt6ct' "$HOME/.zprofile"; then
         echo 'export QT_QPA_PLATFORMTHEME=qt6ct' >> "$HOME/.zprofile" ||
@@ -227,7 +252,7 @@ install_optionals () {
     fi
 
     if confirm_prompt "Install yazi and set it as the terminal file chooser? (Terminal file manager)"; then
-        if ! paru -S yazi xdg-desktop-portal-termfilechooser-hunkyburrito-git; then
+        if ! paru -S --needed yazi xdg-desktop-portal-termfilechooser-hunkyburrito-git; then
             echo "Failed to install yazi packages." >&2;
         elif ! cp -r "$SCRIPT_DIR/.config/xdg-desktop-portal-termfilechooser" "$HOME/.config"; then
             echo "Failed to copy terminal file chooser XDG desktop portal configuration to $HOME/.config/xdg-desktop-portal-termfilechooser." >&2
@@ -247,3 +272,40 @@ if ! sudo -n true 2>/dev/null; then
         exit 1
     fi
 fi
+
+echo "1. Full dotfiles (Rice, ZSH, Neovim, NetworkManager & Applet, Bluetooth & Applet, Optionals)"
+echo "2. Only rice & theming"
+echo "3. Minimal (ZSH, Neovim)"
+echo "4. Adwaita theming"
+read -r -p "What mode would you like to install? " choice
+
+case $choice in 
+    "1") 
+        echo "You have chosen the full dotfiles option. Proceeding to install..."
+        run_catch_error install_core
+        run_catch_error install_bluetooth 
+        run_catch_error install_networkmanager 
+        run_catch_error install_shell_config 
+        run_catch_error install_neovim_config 
+        run_catch_error install_app_theming
+        run_catch_error install_optionals
+        ;;
+    "2")
+        echo "You have chosen the rice & theming option. Proceeding to install..."
+        run_catch_error install_core 
+        run_catch_error install_app_theming
+        ;;
+    "3")
+        echo "You have chosen the minimal option. Proceeding to install..."
+        run_catch_error install_shell_config 
+        run_catch_error install_neovim_config 
+        ;;
+    "4")
+        echo "You have chosen the Adwaita theming option. Proceeding to install..."
+        run_catch_error install_app_theming
+        ;;
+    *)
+        echo "Invalid option chosen. Exiting." >&2
+        exit 1
+        ;;
+esac
