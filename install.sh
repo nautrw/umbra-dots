@@ -267,7 +267,14 @@ install_optionals () {
 # using () instead of {} runs in a subshell, so all directory changes are isolatedl;
 # don't have to cd back when done
 install_paru () (
+    sudo -v || return 1
+
     local tmpdir="$(mktemp -d)" || return 1
+    trap 'rm -rf -- "$TMPDIR"' EXIT
+
+    sudo pacman -S --needed --noconfirm rustup || return 1
+    rustup default stable || return 1
+
     git clone https://aur.archlinux.org/paru.git "$tmpdir/paru" || return 1
     cd "$tmpdir/paru" || return 1
     makepkg -si || return 1
