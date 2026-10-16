@@ -16,7 +16,7 @@ install_core () {
         dunst swayidle copyq wtype ttf-roboto \
         ttf-roboto-slab maplemono-nf \
         ttf-nerd-fonts-symbols; then
-        echo "Failed to install core packages." >&2
+        log_error "Failed to install core packages."
         return 1
     fi
 
@@ -27,62 +27,62 @@ install_core () {
         local dest="$HOME/.config/$config"
 
         if [[ -e "$dest" ]]; then
-            echo "Configuration for $config already exists at $dest. Skipping." >&2
+            log_error "Configuration for $config already exists at $dest. Skipping."
             continue
         fi
 
         if [[ ! -d "$source" ]]; then
-            echo "Configuration source for $config not found: $source." >&2
+            log_error "Configuration source for $config not found: $source."
             continue
         fi
 
         if ! mkdir -p "$dest"; then
-            echo "Failed to make configuration directory $dest." >&2
+            log_error "Failed to make configuration directory $dest."
             continue
         fi
 
         if ! cp -r "$source/." "$dest/"; then
-            echo "Failed to copy $config configuration into $dest." >&2
+            log_error "Failed to copy $config configuration into $dest."
             continue
         fi
 
-        echo "Successfully installed $config configuration."
+        log_success "Successfully installed $config configuration."
     done
 }
 
 install_bluetooth () {
-    echo "Installing Bluetooth packages..."
+    log_info "Installing Bluetooth packages..."
 
     if ! sudo pacman --noconfirm -S --needed bluez bluez-utils blueman; then
-        echo "Failed to install Bluetooth packages." >&2
+        log_error "Failed to install Bluetooth packages."
         return 1
     fi
 
     if ! sudo systemctl enable --now bluetooth.service; then
-        echo "Failed to enable Bluetooth service." >&2
+        log_error "Failed to enable Bluetooth service."
         return 1
     fi
 
-    echo "Bluetooth and Blueman installed successfully."
+    log_success "Bluetooth and Blueman installed successfully."
 }
 
 install_networkmanager () {
-    echo "Installing NetworkManager and applet..."
+    log_info "Installing NetworkManager and applet..."
 
     if ! sudo pacman --noconfirm -S --needed \
         networkmanager network-manager-applet; then
-        echo "Failed to install NetworkManager packages." >&2
+        log_error "Failed to install NetworkManager packages."
         return 1
     fi
 
-    echo "Enabling NetworkManager service..."
+    log_info "Enabling NetworkManager service..."
 
     if ! sudo systemctl enable --now NetworkManager.service; then
-        echo "Failed to enable NetworkManager." >&2
+        log_error "Failed to enable NetworkManager."
         return 1
     fi
 
-    echo "NetworkManager and applet installed successfully."
+    log_success "NetworkManager and applet installed successfully."
 }
 
 install_shell_config () {
@@ -94,32 +94,32 @@ install_shell_config () {
         zsh-auto-venv-git \
         eza \
         starship; then
-        echo "Failed to install Zsh packages." >&2
+        log_error "Failed to install Zsh packages."
         return 1
     fi
 
     if [[ -e "$HOME/.zshrc" ]]; then
-        echo "ZSH configuration already exists at $HOME/.zshrc." >&2
-        echo "Move it before installing this configuration." >&@
+        log_error "ZSH configuration already exists at $HOME/.zshrc."
+        log_error "Move it before installing this configuration."
         return 1
     fi
 
     if ! cp "$SCRIPT_DIR/.zshrc" "$HOME/.zshrc"; then
-        echo "Failed to copy Zsh configuration." >&2
+        log_error "Failed to copy Zsh configuration."
         return 1
     fi
 
-    echo "Zsh installed successfully."
+    log_success "Zsh installed successfully."
 }
 
 install_neovim_config () {
     if [[ -e "$HOME/.config/nvim" ]]; then
-        echo "Neovim configuration already exists at $HOME/.config/nvim." >&2
-        echo "Move it before installing this configuration." >&2
+        log_error "Neovim configuration already exists at $HOME/.config/nvim."
+        log_error "Move it before installing this configuration."
         return 1
     fi
 
-    echo "Installing Neovim configuration..."
+    log_info "Installing Neovim configuration..."
 
     if ! paru -S --needed neovim-nightly-bin \
         tree-sitter \
@@ -127,38 +127,38 @@ install_neovim_config () {
         rustup \
         nodejs-n \
         git; then
-        echo "Failed to install Neovim packages." >&2
+        log_error "Failed to install Neovim packages."
         return 1
     fi
 
-    echo "Installing Rust..."
+    log_info "Installing Rust..."
 
     if ! rustup default stable; then
-        echo "Failed to install Rust." >&2
+        log_error "Failed to install Rust."
         return 1
     fi
 
-    echo "Installing Nodejs..."
+    log_info "Installing Nodejs..."
 
     if ! sudo n i latest; then
-        echo "Failed to install Nodejs." >&2
+        log_error "Failed to install Nodejs."
         return 1
     fi
 
     if ! git clone https://github.com/nautrw/nvim "$HOME/.config/nvim"; then
-        echo "Failed to clone Neovim configuration." >&2
+        log_error "Failed to clone Neovim configuration."
         return 1
     fi
 
-    echo "Successfully installed Neovim configuration."
+    log_success "Successfully installed Neovim configuration."
 }
 
 install_app_theming () {
-    echo "Installing and setting app theming..."
+    log_info "Installing and setting app theming..."
 
     if [[ -e "$HOME/.config/qt6ct" ]]; then
-        echo "Error: Qt6ct configuration already exists at $HOME/.config/qt6ct." >&2
-        echo "Move it before installing this configuration." >&@
+        log_error "Qt6ct configuration already exists at $HOME/.config/qt6ct."
+        log_error "Move it before installing this configuration."
         return 1
     fi
 
@@ -168,33 +168,33 @@ install_app_theming () {
         kvantum-theme-libadwaita-git \
         qt6ct \
         qt5ct; then
-        echo "Failed to install app theming packages." >&2
+        log_error "Failed to install app theming packages."
         return 1
     fi
 
-    echo "Setting GTK apps to Adwaita dark mode..."
+    log_info "Setting GTK apps to Adwaita dark mode..."
 
     if ! gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'; then
-        echo "Failed to set dark colorschemes." >&2
+        log_error "Failed to set dark colorschemes."
         return 1
     fi
 
     if ! gsettings set org.gnome.desktop.interface gtk-theme 'adw-gtk3-dark'; then
-        echo "Failed to set GTK3 theme to Adwaita dark." >&2
+        log_error "Failed to set GTK3 theme to Adwaita dark."
         return 1
     fi
 
     if ! gsettings set org.gnome.desktop.interface icon-theme 'Adwaita'; then
-        echo "Failed to set GTK icon theme to Adwaita." >&2
+        log_error "Failed to set GTK icon theme to Adwaita."
         return 1
     fi
 
-    echo "Setting QT app theming to LibAdwaita..."
+    log_info "Setting QT app theming to LibAdwaita..."
 
     local kvantum_config="$HOME/.config/Kvantum/kvantum.kvconfig"
 
     if ! mkdir -p "${kvantum_config%/*}"; then
-        echo "Failed to create Kvantum configuration directory." >&2
+        log_error "Failed to create Kvantum configuration directory."
         return 1
     fi
 
@@ -208,35 +208,35 @@ install_app_theming () {
 theme=KvLibadwaitaDark
 EOF
     then
-        echo "Failed to set Kvantum Manager theme to Adwaita Dark." >&2
+        log_error "Failed to set Kvantum Manager theme to Adwaita Dark."
         return 1
     fi
 
     if ! cp -r "$SCRIPT_DIR/.config/qt6ct" "$HOME/.config"; then
-        echo "Failed to copy qt6ct configuration into $HOME/.config/qt6ct." >&2
+        log_error "Failed to copy qt6ct configuration into $HOME/.config/qt6ct."
         return 1
     fi
 
     if ! touch "$HOME/.zprofile"; then
-        echo "Failed to create $HOME/.zprofile" >&2
+        log_error "Failed to create $HOME/.zprofile"
         return 1
     fi
 
     # grep checks if the line already exists
     if ! grep -qxF 'export QT_QPA_PLATFORMTHEME=qt6ct' "$HOME/.zprofile"; then
-        echo 'export QT_QPA_PLATFORMTHEME=qt6ct' >> "$HOME/.zprofile" ||
-            return 1
+        if ! echo 'export QT_QPA_PLATFORMTHEME=qt6ct' >> "$HOME/.zprofile"; then
+            log_error "Failed to set QT_QPA_PLATFORMTHEME=qt6ct in $HOME/.zprofile"
     fi
 
-    echo "Successfully themed GTK and QT apps to Adwaita Dark."
+    log_success "Successfully themed GTK and QT apps to Adwaita Dark."
 }
 
 install_optionals () {
     if confirm_prompt "Install v4l2loopback-dkms? (Allows for virtual camera support in OBS studio)"; then
         if ! paru -S --needed v4l2loopback-dkms; then
-            echo "Failed to install v4l2loopback-dkms." >&2
+            log_error "Failed to install v4l2loopback-dkms."
         else
-            echo "Successfully installed v4l2loopback-dkms."
+            log_success "Successfully installed v4l2loopback-dkms."
         fi
     fi
 
@@ -244,23 +244,23 @@ install_optionals () {
         if ! paru -S --needed xdg-desktop-portal-wlr \
             wlr-utils-bin \
             tesseract-data-eng; then
-            echo "Failed to install Wayland XDG desktop portal utilities." >&2
+            log_error "Failed to install Wayland XDG desktop portal utilities."
         elif ! cp -r "$SCRIPT_DIR/.config/xdg-desktop-portal-wlr" "$HOME/.config"; then
-            echo "Failed to copy Wayland XDG deskto portal configuration to $HOME/.config/xdg-desktop-portal-wlr." >&2
+            log_error "Failed to copy Wayland XDG deskto portal configuration to $HOME/.config/xdg-desktop-portal-wlr."
         else
-            echo "Successfully installed Wayland XDG desktop portal utilities."
+            log_success "Successfully installed Wayland XDG desktop portal utilities."
         fi
     fi
 
     if confirm_prompt "Install yazi and set it as the terminal file chooser? (Terminal file manager)"; then
         if ! paru -S --needed yazi xdg-desktop-portal-termfilechooser-hunkyburrito-git; then
-            echo "Failed to install yazi packages." >&2;
+            log_error "Failed to install yazi packages." 
         elif ! cp -r "$SCRIPT_DIR/.config/xdg-desktop-portal-termfilechooser" "$HOME/.config"; then
-            echo "Failed to copy terminal file chooser XDG desktop portal configuration to $HOME/.config/xdg-desktop-portal-termfilechooser." >&2
+            log_error "Failed to copy terminal file chooser XDG desktop portal configuration to $HOME/.config/xdg-desktop-portal-termfilechooser."
         elif ! ya pkg install; then
-            echo "Failed to install Yazi packages." >&2;
+            log_error "Failed to install Yazi packages." 
         else
-            echo "Successfully installed Yazi."
+            log_success "Successfully installed Yazi."
         fi
     fi
 }
@@ -268,17 +268,31 @@ install_optionals () {
 # using () instead of {} runs in a subshell, so all directory changes are isolatedl;
 # don't have to cd back when done
 install_paru () (
-    sudo -v || return 1
+    if ! local tmpdir="$(mktemp -d)"; then
+        log_error "Failed to create temporary directory"
+    fi
 
-    local tmpdir="$(mktemp -d)" || return 1
-    trap 'rm -rf -- "$TMPDIR"' EXIT
+    trap 'rm -rf -- "$TMPDIR"' EXIT || return 1
 
-    sudo pacman -S --needed --noconfirm rustup || return 1
-    rustup default stable || return 1
+    if ! sudo pacman -S --needed --noconfirm rustup; then
+        log_error "Failed to install the rustup package"
+    fi
 
-    git clone https://aur.archlinux.org/paru.git "$tmpdir/paru" || return 1
-    cd "$tmpdir/paru" || return 1
-    makepkg -si || return 1
+    if ! rustup default stable; then
+        log_error "Failed to install rust"
+    fi
+
+    if ! git clone https://aur.archlinux.org/paru.git "$tmpdir/paru"; then
+        log_error "Failed to clone the paru repository from the AUR"
+    fi
+
+    if ! cd "$tmpdir/paru"; then
+        log_error "Failed to CD into paru"
+    fi
+
+    if ! makepkg -si; then
+        log_error "Failed to build paru"
+    fi
 )
 
 install_sddm () {
@@ -287,20 +301,19 @@ install_sddm () {
     fi
 
     if ! paru -S --needed sddm; then
-        echo "Failed to install SDDM." >&2
+        log_error "Failed to install SDDM."
         return 1
     fi
 
     if ! sudo systemctl enable sddm; then
-        echo "Failed to enable the SDDM service." >&2
+        log_error "Failed to enable the SDDM service."
         return 1
     fi
 }
 
 if ! command -v paru; then
     if ! confirm_prompt "Paru is required for this installation script. Install it?"; then
-        echo "Paru is required. Exiting." >&2
-        exit 1
+        log_die "Paru is required. Exiting."
     fi
 
     run_catch_error install_paru
@@ -314,7 +327,7 @@ read -r -p "What mode would you like to install? " choice
 
 case $choice in 
     "1") 
-        echo "You have chosen the full dotfiles option. Proceeding to install..."
+        log_info "You have chosen the full dotfiles option. Proceeding to install..."
         run_catch_error install_core
         run_catch_error install_bluetooth 
         run_catch_error install_networkmanager 
@@ -325,26 +338,25 @@ case $choice in
         run_catch_error install_sddm
         ;;
     "2")
-        echo "You have chosen the rice & theming option. Proceeding to install..."
+        log_info "You have chosen the rice & theming option. Proceeding to install..."
         run_catch_error install_core 
         run_catch_error install_app_theming
         run_catch_error install_sddm
         ;;
     "3")
-        echo "You have chosen the minimal option. Proceeding to install..."
+        log_info "You have chosen the minimal option. Proceeding to install..."
         run_catch_error install_shell_config 
         run_catch_error install_neovim_config 
         ;;
     "4")
-        echo "You have chosen the Adwaita theming option. Proceeding to install..."
+        log_info "You have chosen the Adwaita theming option. Proceeding to install..."
         run_catch_error install_app_theming
         ;;
     *)
-        echo "Invalid option chosen. Exiting." >&2
-        exit 1
+        log_die "Invalid option chosen. Exiting."
         ;;
 esac
 
-echo "The installation was probably a success."
-echo "It is recommended that you reboot to apply all changes."
-echo "Read the README file for some post-install tips."
+log_success "The installation was probably a success."
+log_success "It is recommended that you reboot to apply all changes."
+log_success "Read the README file for some post-install tips."
