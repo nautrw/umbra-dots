@@ -1,6 +1,6 @@
 # shellcheck shell=bash
 
-source .install/vars.sh
+source ./install/vars.sh
 
 confirm_prompt() {
     local prompt="$1 [y/N] "
