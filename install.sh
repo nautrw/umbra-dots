@@ -297,6 +297,22 @@ install_paru () (
     makepkg -si || return 1
 )
 
+install_sddm () {
+    if ! confirm_prompt "Install SDDM to launch Mango?"; then
+        return 1
+    fi
+
+    if ! paru -S --needed sddm; then
+        echo "Failed to install SDDM." >&2
+        return 1
+    fi
+
+    if ! sudo systemctl enable sddm; then
+        echo "Failed to enable the SDDM service." >&2
+        return 1
+    fi
+}
+
 if ! sudo -n true 2>/dev/null; then
     echo "No sudo access, prompting..."
 
@@ -331,11 +347,13 @@ case $choice in
         run_catch_error install_neovim_config 
         run_catch_error install_app_theming
         run_catch_error install_optionals
+        run_catch_error install_sddm
         ;;
     "2")
         echo "You have chosen the rice & theming option. Proceeding to install..."
         run_catch_error install_core 
         run_catch_error install_app_theming
+        run_catch_error install_sddm
         ;;
     "3")
         echo "You have chosen the minimal option. Proceeding to install..."
