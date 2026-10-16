@@ -2,7 +2,7 @@
 
 source .install/vars.sh
 
-confirm_prompt () {
+confirm_prompt() {
     local prompt="$1 [y/N] "
     local REPLY
 
@@ -16,9 +16,62 @@ confirm_prompt () {
     [[ $REPLY =~ ^[Yy]$ ]]
 }
 
-run_catch_error () {
+run_catch_error() {
     if ! "$@"; then
         echo "Error: Installation failed: $@" >&2
         exit 1
     fi
+}
+
+log_info() {
+    echo -e "${STYLE_BLUE}[INFO] $1 ${STYLE_RESET}"
+}
+
+log_success() {
+    echo -e "${STYLE_GREEN}[SUCCESS] $1 ${STYLE_RESET}"
+}
+
+log_warning() {
+    echo -e "${STYLE_YELLOW}[WARN] $1 ${STYLE_RESET}"
+}
+
+log_error() {
+    echo -e "${STYLE_RED}[ERROR] $1 ${STYLE_RESET}" >&2
+}
+
+log_header() {
+    echo -e "${STYLE_PURPLE}==== $1 ====${STYLE_RESET}"
+}
+
+log_die() {
+    log_error "$1"
+    exit 1
+}
+
+command_exists() {
+    # sends all output to /dev/null except in case of error
+    command -v "$1" >/dev/null 2>&2
+}
+
+sudo_keepalive() {
+    if [[ -n "$SUDO_KEEPALIVE_PID" ]] && kill -0 "$SUDO_KEEPALIVE_PID" 2>/dev/null; then
+        # sudo keepalive is already initialized
+        return 0
+    fi
+
+    log_info "Sudo is not initialized, requesting privileges for installation..."
+
+    if ! sudo -v; then
+        log_die "Failed to obtain sudo privileges. Aborting..."
+    fi
+
+    (
+        while true; do
+            sleep 60
+            sudo -v 2>/dev/null || exit 0
+        done
+    ) &
+    SUDO_KEEPALIVE_PID=$!
+
+    log_success "Sudo session initialized and will be kept alive (PID: $SUDO_KEEPALIVE_PID)"
 }

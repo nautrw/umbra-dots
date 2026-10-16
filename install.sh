@@ -2,9 +2,11 @@
 
 source ./install/utils.sh
 
-set -o pipefail
+set -e # will exit if any command returns non-zero status
 
 SCRIPT_DIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
+
+sudo_keepalive 
 
 
 install_core () {
@@ -294,15 +296,6 @@ install_sddm () {
         return 1
     fi
 }
-
-if ! sudo -n true 2>/dev/null; then
-    echo "No sudo access, prompting..."
-
-    if ! sudo -v; then
-        echo "Error: no sudo authentication." >&2
-        exit 1
-    fi
-fi
 
 if ! command -v paru; then
     if ! confirm_prompt "Paru is required for this installation script. Install it?"; then
