@@ -369,3 +369,7 @@ case $choice in
         exit 1
         ;;
 esac
+
+echo "The installation was probably a success."
+echo "It is recommended that you reboot to apply all changes."
+echo "Read the README file for some post-install tips."
