@@ -1,6 +1,8 @@
 # terminal-wakatime setup
 export PATH="$HOME/.wakatime:$PATH"
-eval "$(terminal-wakatime init)"
+if command -v terminal-wakatime &>/dev/null; then
+    eval "$(terminal-wakatime init)"
+fi
 
 # misc. variables
 export PATH="$PATH:/home/$USER/.local/bin"
