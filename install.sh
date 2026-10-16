@@ -311,7 +311,7 @@ install_sddm () {
     fi
 }
 
-if ! command -v paru; then
+if ! command_exists "paru"; then
     if ! confirm_prompt "Paru is required for this installation script. Install it?"; then
         log_die "Paru is required. Exiting."
     fi
