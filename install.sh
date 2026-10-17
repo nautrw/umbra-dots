@@ -295,17 +295,6 @@ install_sddm() {
     log_success "SDDM installed and enabled successfully."
 }
 
-
-# Install paru if it is not already available.
-if ! command_exists paru; then
-    if ! ask_confirm "Paru is required for this installation script. Install it?"; then
-        log_die "Paru is required. Exiting."
-    fi
-
-    run_catch_error install_paru
-fi
-
-
 log_info "$(header "Umbra Dotfiles Installer")"
 
 log_info "  1. Full dotfiles (Rice, ZSH, Neovim, NetworkManager, Bluetooth, Optionals)"
@@ -321,6 +310,15 @@ if ask_confirm "Before the installer begins, would you like to be asked before e
         ask=true
         log_warning "Will not ask before running commands."
     fi
+fi
+
+# Install paru if it is not already available.
+if ! command_exists paru; then
+    if ! ask_confirm "Paru is required for this installation script. Install it?"; then
+        log_die "Paru is required. Exiting."
+    fi
+
+    run_catch_error install_paru
 fi
 
 case $choice in
