@@ -213,7 +213,7 @@ install_optionals() {
     fi
 
     if ask_confirm \
-        "Install Wayland XDG desktop portal utilities? (Window picker for screensharing)"; then
+        "Install Wayland XDG desktop portal utilities? (Window picker for screensharing)" y; then
 
         if user_ask_exec paru -S --needed \
             xdg-desktop-portal-wlr \
@@ -233,7 +233,7 @@ install_optionals() {
     fi
 
     if ask_confirm \
-        "Install Yazi and set it as the terminal file chooser? (Terminal file manager)"; then
+        "Install Yazi and set it as the terminal file chooser? (Terminal file manager)" y; then
 
         if user_ask_exec paru -S --needed \
             yazi xdg-desktop-portal-termfilechooser-hunkyburrito-git; then
@@ -283,7 +283,7 @@ install_paru() (
 
 
 install_sddm() {
-    if ! ask_confirm "Install SDDM to launch Mango?"; then
+    if ! ask_confirm "Install SDDM to launch Mango?" y; then
         log_info "Skipping SDDM installation."
         return 0
     fi
