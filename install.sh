@@ -305,10 +305,15 @@ log_info "  4. Adwaita theming"
 choice=
 read_fmt "What mode would you like to install?" choice || exit 1
 
-if ask_confirm "Before the installer begins, would you like to be asked before every command is run?"; then
-    if ask_confirm "Are you SURE you want to do this? This could be dangerous."; then
+ask_choice=
+read_fmt "Before the installer begins, would you like to be asked before every command is run? [Y/n]" ask_choice 1
+
+if ! [[ ask_choice =~ ^[Yy]$ ]]; then
+    if ask_confirm "Are you SURE you want to do this?"; then
         ask=false
-        log_warning "Will not ask before running commands."
+        log_warning "Will not ask to run commands..."
+    else
+        log_info "Will ask to run commands."
     fi
 fi
 
