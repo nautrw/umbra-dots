@@ -22,15 +22,17 @@ read_fmt() {
 }
 
 ask_confirm() {
-    local prompt="$1 [y/N]"
+    local prompt="$1"
+    local default="${2:-n}"
+    local choice
 
-    # sets the default response var to $REPLY
-    # -n reads 1 char and doesnt need to press enter
-    read_fmt "$prompt" choice 1
-
-    # =~ is for regex match
-    # this will already return 0 if true or 1 if not true
-    [[ $choice =~ ^[Yy]$ ]]
+    if [[ $default == y ]]; then
+        read_fmt "$prompt [Y/n]" choice 1
+        [[ ! $choice =~ ^[Nn]$ ]]
+    else
+        read_fmt "$prompt [y/N]" choice 1
+        [[ $choice =~ ^[Yy]$ ]]
+    fi
 }
 
 run_catch_error() {
