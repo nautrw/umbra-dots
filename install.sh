@@ -316,7 +316,7 @@ fi
 
 # Install paru if it is not already available.
 if ! command_exists paru; then
-    if ! ask_confirm "Paru is required for this installation script. Install it?"; then
+    if ! ask_confirm "Paru is required for this installation script. Install it?" y; then
         log_die "Paru is required. Exiting."
     fi
 
