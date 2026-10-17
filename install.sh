@@ -307,7 +307,7 @@ read_fmt "What mode would you like to install?" choice || exit 1
 
 if ask_confirm "Before the installer begins, would you like to be asked before every command is run?"; then
     if ask_confirm "Are you SURE you want to do this? This could be dangerous."; then
-        ask=true
+        ask=false
         log_warning "Will not ask before running commands."
     fi
 fi
