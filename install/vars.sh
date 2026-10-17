@@ -1,4 +1,6 @@
 # not to be executed; no shebang
+# shellcheck disable=C001
+# shellcheck shell=bash
 
 STYLE_BOLD="\e[1m"
 STYLE_FAINT="\e[2m"
