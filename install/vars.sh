@@ -2,6 +2,7 @@
 # shellcheck disable=C001
 # shellcheck shell=bash
 
+ask=true # default
 STYLE_BOLD="\e[1m"
 STYLE_FAINT="\e[2m"
 STYLE_SLANT="\e[3m"
