@@ -124,12 +124,12 @@ user_catch_error() {
     done
 
     case $cmdstatus in
-    0) log_success "Command '${STYLE_CYAN}$@${STYLE_GREEN}' has finished successfully" ;;
+    0) log_success "Command '${STYLE_CYAN}$*${STYLE_GREEN}' has finished successfully" ;;
     1)
-        log_error "Command '${STYLE_CYAN}$@${STYLE_RED}' has failed, exiting..."
+        log_error "Command '${STYLE_CYAN}$*${STYLE_RED}' has failed, exiting..."
         exit 1
         ;;
-    2) log_warning "Command '${STYLE_CYAN}$@${STYLE_YELLOW}' failed but is being ignored, proceed with caution" ;;
+    2) log_warning "Command '${STYLE_CYAN}$*${STYLE_YELLOW}' failed but is being ignored, proceed with caution" ;;
     esac
 }
 
