@@ -167,6 +167,8 @@ user_ask_exec() {
                 if ask_confirm "Are you SURE you want to do this?" \
                     && ask_confirm "Are you ABSOLUTELY SURE?"; then
                         ask=false
+                        log_warning "Will not ask to run any commands..."
+                        log_info "Executing command..."
                 else
                     continue
                 fi
