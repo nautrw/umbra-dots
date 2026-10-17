@@ -135,7 +135,7 @@ user_catch_error() {
 
 user_ask_exec() {
     log_info "$(header "Next Command")"
-    log_info "$@"
+    log_info "$*"
 
     local execute=true
 
@@ -156,7 +156,7 @@ user_ask_exec() {
         case $choice in
             [eE])
                 log_info "Exiting..."
-                exit
+                exit 0
                 ;;
             [sS])
                 log_warning "Skipping this command..."
@@ -182,6 +182,6 @@ user_ask_exec() {
     if $execute; then
         user_catch_error "$@"
     else
-        log_warning "Skipped $@"
+        log_warning "Skipped $*"
     fi
 }
