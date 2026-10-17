@@ -56,8 +56,9 @@ log_error() {
     echo -e "${STYLE_RED}[ERROR] $1 ${STYLE_RESET}" >&2
 }
 
-log_header() {
-    echo -e "${STYLE_PURPLE}==== $1 ====${STYLE_RESET}"
+header() {
+    # printf doesnt use a newline, essentially returning the string
+    printf '%s' "========== $1 =========="
 }
 
 log_die() {
@@ -93,7 +94,7 @@ sudo_keepalive() {
     log_success "Sudo session initialized and will be kept alive (PID: $SUDO_KEEPALIVE_PID)"
 }
 
-try() {
+user_catch_error() {
     local cmdstatus=0
     # $@ expands to all positional arguments
     if ! "$@"; then cmdstatus=1; fi
@@ -104,7 +105,7 @@ try() {
         log_info "  r: Repeat this command (default)"
         log_info "  e: Exit"
         log_info "  i: Ignore and continue (may break the setup)"
-        read -r -p "  You may decide what to do [R/e/i]: " choice
+        ask_fmt "${STYLE_CYAN}What to do? [R/e/i] ${STYLE_RESET}" choice
 
         case $choice in
         [eE])
@@ -130,4 +131,54 @@ try() {
         ;;
     2) log_warning "Command '${STYLE_CYAN}$@${STYLE_YELLOW}' failed but is being ignored, proceed with caution" ;;
     esac
+}
+
+user_ask_exec() {
+    log_info "$(header "Next Command")"
+    log_info "$@"
+
+    local execute=true
+
+    # bash variables are global anywhere
+    if $ask; then
+        while true; do
+            local choice
+            log_info "  y: Yes (default)"
+            log_info "  e: Exit now"
+            log_info "  s: Skip (may break the setup)"
+            log_info "  a: Yes and don't ask again (NOT recommended)"
+            read_fmt "${STYLE_CYAN}Execute? [Y/e/s/a]: ${STYLE_RESET}" choice 1
+
+            case $choice in
+                [eE])
+                    log_info "Exiting..."
+                    exit
+                    ;;
+                [sS])
+                    log_warning "Skipping this command..."
+                    execute=false
+                    break
+                    ;;
+                [aA])
+                    if ask_confirm "Are you SURE you want to do this?" \
+                        && ask_confirm "Are you ABSOLUTELY SURE?"; then
+                            ask=false
+                    else
+                        continue
+                    fi
+                    break
+                    ;;
+                *) # yes
+                    log_info "Executing command..."
+                    break
+                    ;;
+            esac
+        done
+
+        if $execute; then
+            user_catch_error "$@"
+        else
+            log_warning "Skipped $@"
+        fi
+    fi
 }
