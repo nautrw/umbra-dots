@@ -1,6 +1,6 @@
 # shellcheck shell=bash
 
-source ./install/vars.sh
+source ./lib/vars.sh
 
 read_fmt() {
     local prompt="$1"
