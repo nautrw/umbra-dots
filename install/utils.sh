@@ -140,45 +140,48 @@ user_ask_exec() {
     local execute=true
 
     # bash variables are global anywhere
-    if $ask; then
-        while true; do
-            local choice
-            log_info "  y: Yes (default)"
-            log_info "  e: Exit now"
-            log_info "  s: Skip (may break the setup)"
-            log_info "  a: Yes and don't ask again (NOT recommended)"
-            read_fmt "${STYLE_CYAN}Execute? [Y/e/s/a]: ${STYLE_RESET}" choice 1
+    if ! $ask; then
+        user_catch_error "$@"
+        return
+    fi
 
-            case $choice in
-                [eE])
-                    log_info "Exiting..."
-                    exit
-                    ;;
-                [sS])
-                    log_warning "Skipping this command..."
-                    execute=false
-                    break
-                    ;;
-                [aA])
-                    if ask_confirm "Are you SURE you want to do this?" \
-                        && ask_confirm "Are you ABSOLUTELY SURE?"; then
-                            ask=false
-                    else
-                        continue
-                    fi
-                    break
-                    ;;
-                *) # yes
-                    log_info "Executing command..."
-                    break
-                    ;;
-            esac
-        done
+    while true; do
+        local choice
+        log_info "  y: Yes (default)"
+        log_info "  e: Exit now"
+        log_info "  s: Skip (may break the setup)"
+        log_info "  a: Yes and don't ask again (NOT recommended)"
+        read_fmt "${STYLE_CYAN}Execute? [Y/e/s/a]: ${STYLE_RESET}" choice 1
 
-        if $execute; then
-            user_catch_error "$@"
-        else
-            log_warning "Skipped $@"
-        fi
+        case $choice in
+            [eE])
+                log_info "Exiting..."
+                exit
+                ;;
+            [sS])
+                log_warning "Skipping this command..."
+                execute=false
+                break
+                ;;
+            [aA])
+                if ask_confirm "Are you SURE you want to do this?" \
+                    && ask_confirm "Are you ABSOLUTELY SURE?"; then
+                        ask=false
+                else
+                    continue
+                fi
+                break
+                ;;
+            *) # yes
+                log_info "Executing command..."
+                break
+                ;;
+        esac
+    done
+
+    if $execute; then
+        user_catch_error "$@"
+    else
+        log_warning "Skipped $@"
     fi
 }
