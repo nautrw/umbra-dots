@@ -2,18 +2,35 @@
 
 source ./install/vars.sh
 
-confirm_prompt() {
-    local prompt="$1 [y/N] "
+read_fmt() {
+    local prompt="$1"
+    # -n is a reference to another variable
+    local -n response="$2"
+    # #{var:-} syntax makes it an optional arg by defaulting to emptyu
+    local readchars="${3:-}"
     local REPLY
+
+    # printf '%s' "$prompt"
+    echo -ne "${STYLE_CYAN}$prompt ${STYLE_RESET}"
+
+    if [[ -n $readchars ]]; then
+        read -r -n "$readchars" response || return 1
+        printf '\n'
+    else
+        read -r -e response || return 1
+    fi
+}
+
+ask_confirm() {
+    local prompt="$1 [y/N]"
 
     # sets the default response var to $REPLY
     # -n reads 1 char and doesnt need to press enter
-    read -r -p "$prompt" -n 1 REPLY || return 1
-    echo
+    read_fmt "$prompt" choice 1
 
     # =~ is for regex match
     # this will already return 0 if true or 1 if not true
-    [[ $REPLY =~ ^[Yy]$ ]]
+    [[ $choice =~ ^[Yy]$ ]]
 }
 
 run_catch_error() {
