@@ -1,0 +1,120 @@
+configuration {
+    font: "sans 14";
+    terminal: "kitty";
+    show-icons: true;
+    matching: "fuzzy";
+    show-actions: false;
+    drun-display-format: "{name}";
+    display-drun: "  ";
+    separator-style: "none";
+    modi: "drun,run,calc";
+}
+
+* {
+    background-color: #303030;
+    text-color: #f6f5f4;
+    border-color: #454545;
+    margin: 0px;
+    padding: 0px;
+    spacing: 0px;
+}
+
+window {
+    width: 22em;
+    background-color: #303030;
+    border: 2px;
+    border-color: #454545;
+    border-radius: 12px;
+    padding: 12px;
+}
+
+mainbox {
+    background-color: #303030;
+    border: 0px;
+    padding: 0px;
+    spacing: 8px;
+    children: [ inputbar, message, listview ];
+}
+
+inputbar {
+    background-color: #303030;
+    border: 0px;
+    padding: 4px;
+    spacing: 8px;
+    children: [ prompt, entry ];
+}
+
+prompt {
+    background-color: #303030;
+    text-color: #78aeed;
+    font: "Symbols Nerd Font 14";
+}
+
+entry {
+    background-color: #303030;
+    text-color: #f6f5f4;
+    placeholder: "Type to search...";
+    placeholder-color: #a0a0a0;
+    cursor: text;
+}
+
+listview {
+    background-color: #303030;
+    border: 0px;
+    scrollbar: false;
+    spacing: 2px;
+    margin: 0px;
+    padding: 0px;
+    columns: 1;
+    lines: 15;
+    fixed-height: true;
+}
+
+element {
+    background-color: #303030;
+    text-color: #f6f5f4;
+    border: 0px;
+    border-radius: 6px;
+    padding: 0px 0px;
+    spacing: 8px;
+}
+
+element normal.normal {
+    background-color: #303030;
+    text-color: #f6f5f4;
+}
+
+element alternate.normal {
+    background-color: #303030;
+    text-color: #f6f5f4;
+}
+
+element selected.normal {
+    background-color: #3584e4;
+    text-color: #ffffff;
+    border: 0px;
+}
+
+element-text {
+    background-color: inherit;
+    text-color: inherit;
+    vertical-align: 0.5;
+}
+
+element-icon {
+    background-color: transparent;
+    size: 1.2em;
+}
+
+message {
+    background-color: #303030;
+    text-color: #78aeed;
+    padding: 6px 8px;
+    border: 0px;
+}
+
+textbox {
+    background-color: #303030;
+    text-color: #78aeed;
+    padding: 0px;
+}

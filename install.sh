@@ -11,14 +11,14 @@ install_core() {
     log_info "Installing core packages..."
 
     user_ask_exec paru -S --needed \
-        mangowm kitty fuzzel mangobar wl-clipboard \
+        mangowm kitty rofi rofi-calc mangobar wl-clipboard \
         grim slurp wlogout xorg-xwayland xlockmore \
         dunst swayidle copyq wtype ttf-roboto \
         ttf-roboto-slab maplemono-nf \
         ttf-nerd-fonts-symbols || return 1
 
     local configs=(
-        mango kitty mangobar fuzzel wlogout dunst fontconfig
+        mango kitty mangobar rofi wlogout dunst fontconfig
     )
     local config source dest
 
