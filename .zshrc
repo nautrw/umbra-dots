@@ -5,7 +5,7 @@ if command -v terminal-wakatime &>/dev/null; then
 fi
 
 # misc. variables
-export PATH="$PATH:/home/$USER/.local/bin"
+export PATH="$PATH:/home/$USER/.local/bin:/home/$USER/.cargo/bin"
 export EDITOR=nvim
 
 # keybinds
