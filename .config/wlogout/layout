@@ -1,6 +1,6 @@
 {
     "label" : "lock",
-    "action" : "sh ~/.config/mango/scripts/lock.sh",
+    "action": "swaylock",
     "text" : "Lock",
     "keybind" : "l"
 }

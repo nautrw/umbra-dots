@@ -12,7 +12,7 @@ install_core() {
 
     user_ask_exec paru -S --needed \
         mangowm kitty rofi rofi-calc mangobar wl-clipboard \
-        grim slurp wlogout xorg-xwayland xlockmore \
+        grim slurp wlogout xorg-xwayland swaylock \
         dunst swayidle copyq wtype ttf-roboto \
         ttf-roboto-slab maplemono-nf \
         ttf-nerd-fonts-symbols || return 1
