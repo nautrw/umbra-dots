@@ -4,6 +4,11 @@ if command -v terminal-wakatime &>/dev/null; then
     eval "$(terminal-wakatime init)"
 fi
 
+# pyenv
+export PYENV_ROOT="$HOME/.pyenv"
+[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init - zsh)"
+
 # misc. variables
 export PATH="$PATH:/home/$USER/.local/bin:/home/$USER/.cargo/bin"
 export EDITOR=nvim
