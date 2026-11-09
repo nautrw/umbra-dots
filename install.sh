@@ -86,7 +86,6 @@ install_shell_config() {
         zsh \
         zsh-fast-syntax-highlighting \
         zsh-vi-mode \
-        zsh-auto-venv-git \
         eza \
         starship || return 1
 

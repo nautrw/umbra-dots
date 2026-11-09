@@ -31,7 +31,6 @@ alias rlzsh="source ~/.zshrc"
 
 # plugins
 source /usr/share/zsh/plugins/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh
-source /usr/share/zsh/plugins/zsh-auto-venv/auto-venv.plugin.zsh
 source /usr/share/zsh/plugins/zsh-vi-mode/zsh-vi-mode.plugin.zsh
 
 function zvm_vi_yank() {
@@ -41,3 +40,32 @@ function zvm_vi_yank() {
 
 # starship
 eval "$(starship init zsh)"
+
+### Python Venvs
+autoload -Uz add-zsh-hook
+add-zsh-hook precmd automatically_activate_python_venv
+
+function automatically_activate_python_venv() {
+  if [[ -z $VIRTUAL_ENV ]]; then
+    activate_venv
+  else
+    parentdir="$(dirname ${VIRTUAL_ENV})"
+    if [[ "$PWD"/ != "$parentdir"/* ]]; then
+      deactivate
+      activate_venv
+    fi
+  fi
+}
+
+function activate_venv() {
+  local d n
+  d=$PWD
+  until false; do
+    if [[ -f $d/.venv/bin/activate ]]; then
+      source $d/.venv/bin/activate && echo "\e[32mActivated Python virtual environment: $d/.venv"
+      break
+    fi
+    d=${d%/*}
+    [[ $d = *\/* ]] || break
+  done
+}
