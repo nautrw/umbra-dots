@@ -15,6 +15,15 @@ ShellRoot {
 
             property var tagStates: ({})
 
+            function switchTag(n) {
+                tagSwitchProc.command = ["mmsg", "dispatch", "view," + n.toString()]
+                tagSwitchProc.running = true
+            }
+
+            Process {
+                id: tagSwitchProc
+            }
+
             anchors {
                 top: true
                 left: true
@@ -77,33 +86,71 @@ ShellRoot {
             RowLayout {
                 anchors.fill: parent
 
-                Row {
-                    spacing: 4
+                Item {
+                    id: workspacesContainer
 
-                    Repeater {
-                        model: 9
+                    width: workspaceRow.implicitWidth
+                    height: workspaceRow.implicitHeight
 
-                        delegate: Rectangle {
-                            required property int index
+                    Row {
+                        id: workspaceRow
+                        spacing: 4
 
-                            property var tagObj:
-                                panel.tagStates[(index + 1).toString()] || null
+                        Repeater {
+                            model: 9
 
-                            property bool isActive:
-                                tagObj ? tagObj.active : false
+                            delegate: Rectangle {
+                                id: wsDelegate
+                                required property int index
 
-                            width: 22
-                            height: 21
-                            radius: 3
+                                property var tagObj:
+                                    panel.tagStates[(index + 1).toString()] || null
 
-                            color: isActive ? "#707070" : "#303030"
+                                property bool isActive:
+                                    tagObj ? tagObj.active : false
 
-                            Text {
-                                anchors.centerIn: parent
-                                text: index + 1
-                                color: Colors.foreground
-                                font.pixelSize: 12
+                                width: 22
+                                height: 21
+                                radius: 3
+
+                                color: isActive ? "#707070" : "#303030"
+
+                                Text {
+                                    anchors.centerIn: parent
+                                    text: index + 1
+                                    color: Colors.foreground
+                                    font.pixelSize: 12
+                                }
+
+                                MouseArea {
+                                    anchors.fill: parent
+
+                                    cursorShape: Qt.PointingHandCursor
+                                    onClicked: panel.switchTag(wsDelegate.index + 1)
+                                }
                             }
+                        }
+                    }
+
+                    WheelHandler {
+                        target: null
+                        acceptedDevices: PointerDevice.Mouse | PointerDevice.TouchPad
+
+                        onWheel: (event) => {
+                            let current = 1
+
+                            for (const [index, tag] of Object.entries(panel.tagStates)) {
+                                if (tag.active) {
+                                    current = Number(index)
+                                    break
+                                }
+                            }
+
+                            const delta = event.angleDelta.y > 0 ? 1 : -1
+                            // panel.switchTag(Math.max(1, Math.min(9, current + delta)))
+                            // above doesnt wraps around, this one does
+                            const nextTag = ((current - 1 + delta + 9) % 9) + 1
+                            panel.switchTag(nextTag)
                         }
                     }
                 }
