@@ -50,7 +50,7 @@ ShellRoot {
 
             implicitHeight: 27
             exclusiveZone: 27
-            color: Colors.background
+            color: Theme.background
 
             Process {
                 id: tagWatcher
@@ -140,8 +140,8 @@ ShellRoot {
                                 Text {
                                     anchors.centerIn: parent
                                     text: index + 1
-                                    color: Colors.foreground
-                                    font.pixelSize: 12
+                                    color: Theme.foreground
+                                    font.pixelSize: Theme.fontSize
                                 }
 
                                 MouseArea {
@@ -180,8 +180,8 @@ ShellRoot {
 
                 Text {
                     text: panel.focusedWindowTitle
-                    color: Colors.foreground
-                    font.pixelSize: 12
+                    color: Theme.foreground
+                    font.pixelSize: Theme.fontSize
                 }
 
                 Item {
