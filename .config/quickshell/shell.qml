@@ -14,6 +14,7 @@ ShellRoot {
             screen: modelData
 
             property var tagStates: ({})
+            property string focusedWindowTitle: ""
 
             function switchTag(n) {
                 tagSwitchProc.command = ["mmsg", "dispatch", "view," + n.toString()]
@@ -22,6 +23,23 @@ ShellRoot {
 
             Process {
                 id: tagSwitchProc
+            }
+
+            Process {
+                id: focusedWatcher
+                command: ["mmsg", "watch", "focusing-client"]
+                running: true
+
+                stdout: SplitParser {
+                    onRead: data => {
+                        try {
+                            const client = JSON.parse(data)
+                            panel.focusedWindowTitle = client.title || client.name || ""
+                        } catch (e) {
+                            console.warn("Window parsing error:", e)
+                        }
+                    }
+                }
             }
 
             anchors {
@@ -86,8 +104,12 @@ ShellRoot {
             RowLayout {
                 anchors.fill: parent
 
+                // WORKSPACES
                 Item {
                     id: workspacesContainer
+
+                    Layout.fillWidth: true
+                    Layout.preferredWidth: 1
 
                     width: workspaceRow.implicitWidth
                     height: workspaceRow.implicitHeight
@@ -146,13 +168,24 @@ ShellRoot {
                                 }
                             }
 
-                            const delta = event.angleDelta.y > 0 ? 1 : -1
+                            // feels more natural when reversed
+                            const delta = event.angleDelta.y > 0 ? -1 : 1
                             // panel.switchTag(Math.max(1, Math.min(9, current + delta)))
                             // above doesnt wraps around, this one does
                             const nextTag = ((current - 1 + delta + 9) % 9) + 1
                             panel.switchTag(nextTag)
                         }
                     }
+                }
+
+                Text {
+                    text: panel.focusedWindowTitle
+                    color: Colors.foreground
+                    font.pixelSize: 12
+                }
+
+                Item {
+                    Layout.fillWidth: true
                 }
             }
         }
