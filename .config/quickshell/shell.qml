@@ -50,7 +50,7 @@ ShellRoot {
 
             implicitHeight: 27
             exclusiveZone: 27
-            color: Theme.background
+            color: Theme.backgroundDark
 
             Process {
                 id: tagWatcher
@@ -135,7 +135,7 @@ ShellRoot {
                                 height: 21
                                 radius: 3
 
-                                color: isActive ? "#707070" : "#303030"
+                                color: isActive ? Theme.elevated : Theme.surface
 
                                 Text {
                                     anchors.centerIn: parent
