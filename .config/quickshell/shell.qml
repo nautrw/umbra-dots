@@ -179,7 +179,7 @@ ShellRoot {
                 }
 
                 Text {
-                    text: panel.focusedWindowTitle
+                    text: Utils.truncateText(panel.focusedWindowTitle, 75)
                     color: Theme.foreground
                     font.pixelSize: Theme.fontSize
                 }
