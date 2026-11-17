@@ -1,186 +1,142 @@
 import Quickshell
-import Quickshell.Io
 import QtQuick
 import QtQuick.Layouts
 
+import qs.services
 import qs.modules.common
 
-PanelWindow {
-    id: panel
+Variants {
+    model: Quickshell.screens
 
-    property var tagStates: ({})
-    property string focusedWindowTitle: ""
+    PanelWindow {
+        id: panel
 
-    function switchTag(n) {
-        tagSwitchProc.command = ["mmsg", "dispatch", "view," + n.toString()]
-        tagSwitchProc.running = true
-    }
+        required property var modelData
+        screen: modelData
 
-    Process {
-        id: tagSwitchProc
-    }
-
-    Process {
-        id: focusedWatcher
-        command: ["mmsg", "watch", "focusing-client"]
-        running: true
-
-        stdout: SplitParser {
-            onRead: data => {
-                try {
-                    const client = JSON.parse(data)
-                    panel.focusedWindowTitle = client.title || client.name || ""
-                } catch (e) {
-                    console.warn("Window parsing error:", e)
-                }
-            }
+        anchors {
+            top: true
+            left: true
+            right: true
         }
-    }
 
-    anchors {
-        top: true
-        left: true
-        right: true
-    }
+        implicitHeight: 27
+        exclusiveZone: 27
+        color: Appearance.backgroundDark
 
-    implicitHeight: 27
-    exclusiveZone: 27
-    color: Appearance.backgroundDark
+        RowLayout {
+            anchors.fill: parent
+            spacing: 0
 
-    Process {
-        id: tagWatcher
-        command: ["mmsg", "watch", "all-tags"]
-        running: true
+            // WORKSPACES
+            Item {
+                id: workspacesContainer
 
-        stdout: SplitParser {
-            splitMarker: "\n"
+                Layout.fillWidth: true
+                Layout.preferredWidth: 1
 
-            onRead: (line) => {
-                const trimmed = line.trim()
-                if (!trimmed) return
+                implicitWidth: workspaceRow.implicitWidth
+                implicitHeight: workspaceRow.implicitHeight
 
-                let data
-                try {
-                    data = JSON.parse(trimmed)
-                } catch (e) {
-                    console.warn("JSON parse error:", e)
-                    return
-                }
+                property var monitorTags:
+                    Mango.tagStates[modelData.name] || ({})
 
-                if (!data.all_tags) return
+                Row {
+                    id: workspaceRow
+                    spacing: 4
 
-                const screenName = panel.modelData.name
+                    Repeater {
+                        model: 9
 
-                const monEntry = data.all_tags.find(
-                    m => m.monitor === screenName
-                )
+                        delegate: Rectangle {
+                            id: wsDelegate
 
-                if (!monEntry) {
-                    console.warn("Monitor not found:", screenName)
-                    return
-                }
+                            required property int index
 
-                const updated = {}
+                            property var tagObj:
+                            workspacesContainer.monitorTags[
+                                (index + 1).toString()
+                            ] || null
 
-                for (const t of monEntry.tags) {
-                    updated[t.index.toString()] = {
-                        active: t.is_active,
-                        urgent: t.is_urgent,
-                        clients: t.client_mount
-                    }
-                }
-
-                panel.tagStates = updated
-            }
-        }
-    }
-
-    // Your existing layout goes here
-    RowLayout {
-        anchors.fill: parent
-
-        // WORKSPACES
-        Item {
-            id: workspacesContainer
-
-            Layout.fillWidth: true
-            Layout.preferredWidth: 1
-
-            width: workspaceRow.implicitWidth
-            height: workspaceRow.implicitHeight
-
-            Row {
-                id: workspaceRow
-                spacing: 4
-
-                Repeater {
-                    model: 9
-
-                    delegate: Rectangle {
-                        id: wsDelegate
-                        required property int index
-
-                        property var tagObj:
-                            panel.tagStates[(index + 1).toString()] || null
-
-                        property bool isActive:
+                            property bool isActive:
                             tagObj ? tagObj.active : false
 
-                        width: 22
-                        height: 21
-                        radius: 3
+                            property bool isUrgent:
+                            tagObj ? tagObj.urgent : false
 
-                        color: isActive ? Appearance.elevated : Appearance.surface
+                            width: 22
+                            height: 21
+                            radius: 3
 
-                        Text {
-                            anchors.centerIn: parent
-                            text: index + 1
-                            color: Appearance.foreground
-                            font.pixelSize: Appearance.fontSize
+                            color: {
+                                if (isActive)
+                                return Appearance.elevated
+
+                                if (isUrgent)
+                                return Appearance.accent
+
+                                return Appearance.surface
+                            }
+
+                            Text {
+                                anchors.centerIn: parent
+
+                                text: index + 1
+                                color: Appearance.foreground
+                                font.pixelSize: Appearance.fontSize
+                            }
+
+                            MouseArea {
+                                anchors.fill: parent
+
+                                cursorShape: Qt.PointingHandCursor
+
+                                onClicked: {
+                                    Mango.switchTag(wsDelegate.index + 1)
+                                }
+                            }
+                        }
+                    }
+                }
+
+                WheelHandler {
+                    target: null
+                    acceptedDevices: PointerDevice.Mouse | PointerDevice.TouchPad
+
+                    onWheel: event => {
+                        let current = 1
+
+                        for (const [index, tag] of Object.entries(
+                            workspacesContainer.monitorTags
+                        )) {
+                            if (tag.active) {
+                                current = Number(index)
+                                break
+                            }
                         }
 
-                        MouseArea {
-                            anchors.fill: parent
+                        const delta = event.angleDelta.y > 0 ? -1 : 1
+                        const nextTag = ((current - 1 + delta + 9) % 9) + 1
 
-                            cursorShape: Qt.PointingHandCursor
-                            onClicked: panel.switchTag(wsDelegate.index + 1)
-                        }
+                        Mango.switchTag(nextTag)
                     }
                 }
             }
 
-            WheelHandler {
-                target: null
-                acceptedDevices: PointerDevice.Mouse | PointerDevice.TouchPad
+            // FOCUSED WINDOW TITLE
+            Text {
+                text: Utils.truncateText(Mango.focusedWindowTitle, 75)
 
-                onWheel: (event) => {
-                    let current = 1
+                color: Appearance.foreground
+                font.pixelSize: Appearance.fontSize
 
-                    for (const [index, tag] of Object.entries(panel.tagStates)) {
-                        if (tag.active) {
-                            current = Number(index)
-                            break
-                        }
-                    }
-
-                    // feels more natural when reversed
-                    const delta = event.angleDelta.y > 0 ? -1 : 1
-                    // panel.switchTag(Math.max(1, Math.min(9, current + delta)))
-                    // above doesnt wraps around, this one does
-                    const nextTag = ((current - 1 + delta + 9) % 9) + 1
-                    panel.switchTag(nextTag)
-                }
+                Layout.alignment: Qt.AlignVCenter
             }
-        }
 
-        Text {
-            text: Utils.truncateText(panel.focusedWindowTitle, 75)
-            color: Appearance.foreground
-            font.pixelSize: Appearance.fontSize
-        }
-
-        Item {
-            Layout.fillWidth: true
+            // RIGHT SPACER
+            Item {
+                Layout.fillWidth: true
+            }
         }
     }
 }
