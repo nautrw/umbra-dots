@@ -166,8 +166,8 @@ Variants {
                             source: trayItem.modelData.icon
                             width: 20
                             height: 20
-                            sourceSize.width: 20
-                            sourceSize.height: 20
+                            sourceSize.width: 50
+                            sourceSize.height: 50
                             fillMode: Image.PreserveAspectFit
                         }
 
