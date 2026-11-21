@@ -37,11 +37,12 @@ Variants {
 
             // WORKSPACES
             WorkspacesRow {
+                Layout.leftMargin: Appearance.margin
             }
 
             // FOCUSED WINDOW TITLE
             Text {
-                Layout.leftMargin: 10
+                Layout.leftMargin: Appearance.margin
                 text: Utils.truncateText(Mango.focusedWindowTitle, 75)
                 color: Appearance.foreground
                 font.pixelSize: Appearance.fontSize
@@ -56,6 +57,8 @@ Variants {
             }
 
             RowLayout {
+                Layout.rightMargin: Appearance.margin
+
                 Text {
                     id: clockTime
 
@@ -63,7 +66,6 @@ Variants {
                     font.pixelSize: Appearance.fontSize
                     color: Appearance.foreground
                 }
-
             }
 
         }
