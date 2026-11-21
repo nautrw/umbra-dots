@@ -45,7 +45,7 @@ Variants {
                 Layout.leftMargin: Appearance.margin
 
                 Image {
-                    Layout.preferredWidth: 24
+                    Layout.preferredWidth: source != "" ? 24 : 0
                     Layout.preferredHeight: 24
 
                     source: {
