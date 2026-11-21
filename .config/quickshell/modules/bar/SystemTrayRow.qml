@@ -1,10 +1,11 @@
-import Quickshell
 import QtQuick
 import QtQuick.Layouts
+import Quickshell
 import Quickshell.Services.SystemTray
 
 Row {
     id: systemTrayRow
+
     spacing: 4
 
     Repeater {
@@ -12,6 +13,7 @@ Row {
 
         delegate: Item {
             id: trayItem
+
             required property var modelData
 
             implicitWidth: 20
@@ -19,6 +21,7 @@ Row {
 
             QsMenuAnchor {
                 id: trayMenu
+
                 anchor.item: trayItem
                 menu: trayItem.modelData.menu
                 anchor.edges: Edges.Bottom
@@ -38,14 +41,16 @@ Row {
             MouseArea {
                 anchors.fill: parent
                 acceptedButtons: Qt.LeftButton | Qt.RightButton | Qt.MiddleButton
-
-                onClicked: mouse => {
+                onClicked: (mouse) => {
                     if (mouse.button === Qt.LeftButton && !trayItem.modelData.onlyMenu)
-                        trayItem.modelData.activate()
+                        trayItem.modelData.activate();
                     else if (trayItem.modelData.hasMenu)
-                        trayMenu.open()
+                        trayMenu.open();
                 }
             }
+
         }
+
     }
+
 }

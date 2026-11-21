@@ -1,18 +1,18 @@
-pragma Singleton
-
+import QtQuick
 import Quickshell
 import Quickshell.Io
-import QtQuick
+pragma Singleton
 
 Singleton {
     id: root
 
-    property var tagStates: ({})
+    property var tagStates: ({
+    })
     property string focusedWindowTitle: ""
 
     function switchTag(n) {
-        tagSwitchProc.command = ["mmsg", "dispatch", "view," + n.toString()]
-        tagSwitchProc.running = true
+        tagSwitchProc.command = ["mmsg", "dispatch", "view," + n.toString()];
+        tagSwitchProc.running = true;
     }
 
     Process {
@@ -21,62 +21,64 @@ Singleton {
 
     Process {
         id: focusedWatcher
+
         command: ["mmsg", "watch", "focusing-client"]
         running: true
 
         stdout: SplitParser {
-            onRead: data => {
+            onRead: (data) => {
                 try {
-                    const client = JSON.parse(data)
-                    root.focusedWindowTitle = client.title || client.name || ""
+                    const client = JSON.parse(data);
+                    root.focusedWindowTitle = client.title || client.name || "";
                 } catch (e) {
-                    console.warn("Window parsing error:", e)
+                    console.warn("Window parsing error:", e);
                 }
             }
         }
+
     }
 
     Process {
         id: tagWatcher
+
         command: ["mmsg", "watch", "all-tags"]
         running: true
 
         stdout: SplitParser {
             splitMarker: "\n"
+            onRead: (line) => {
+                const trimmed = line.trim();
+                if (!trimmed)
+                    return ;
 
-            onRead: line => {
-                const trimmed = line.trim()
-                if (!trimmed) return
-
-                let data
-
+                let data;
                 try {
-                    data = JSON.parse(trimmed)
+                    data = JSON.parse(trimmed);
                 } catch (e) {
-                    console.warn("JSON parse error:", e)
-                    return
+                    console.warn("JSON parse error:", e);
+                    return ;
                 }
+                if (!data.all_tags)
+                    return ;
 
-                if (!data.all_tags) return
-
-                const updated = {}
-
+                const updated = {
+                };
                 for (const monitor of data.all_tags) {
-                    const monitorTags = {}
-
+                    const monitorTags = {
+                    };
                     for (const tag of monitor.tags) {
                         monitorTags[tag.index.toString()] = {
-                            active: tag.is_active,
-                            urgent: tag.is_urgent,
-                            clients: tag.client_mount
-                        }
+                            "active": tag.is_active,
+                            "urgent": tag.is_urgent,
+                            "clients": tag.client_mount
+                        };
                     }
-
-                    updated[monitor.monitor] = monitorTags
+                    updated[monitor.monitor] = monitorTags;
                 }
-
-                root.tagStates = updated
+                root.tagStates = updated;
             }
         }
+
     }
+
 }
