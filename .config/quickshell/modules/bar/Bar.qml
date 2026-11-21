@@ -15,8 +15,8 @@ Variants {
         required property var modelData
 
         screen: modelData
-        implicitHeight: 27
-        exclusiveZone: 27
+        implicitHeight: 26
+        exclusiveZone: 26
         color: Appearance.backgroundDark
 
         anchors {
@@ -40,13 +40,39 @@ Variants {
                 Layout.leftMargin: Appearance.margin
             }
 
-            // FOCUSED WINDOW TITLE
-            Text {
+            RowLayout {
+                implicitHeight: 24
                 Layout.leftMargin: Appearance.margin
-                text: Utils.truncateText(Mango.focusedWindowTitle, 75)
-                color: Appearance.foreground
-                font.pixelSize: Appearance.fontSize
+
+                Image {
+                    Layout.preferredWidth: 24
+                    Layout.preferredHeight: 24
+
+                    source: {
+                        const entry = DesktopEntries.heuristicLookup(
+                            Mango.focusedWindowAppID
+                        );
+
+                        return entry
+                            ? Quickshell.iconPath(entry.icon)
+                            : "";
+                    }
+                    sourceSize.width: 24
+                    sourceSize.height: 24
+
+                    fillMode: Image.PreserveAspectFit
+                    visible: source !== "" && Mango.focusedWindowTitle !== ""
+                }
+
+                Text {
+                    text: Utils.truncateText(Mango.focusedWindowTitle, 75)
+                    color: Appearance.foreground
+                    font.pixelSize: Appearance.fontSize
+                }
             }
+
+
+            // FOCUSED WINDOW TITLE
 
             // RIGHT SPACER
             Item {

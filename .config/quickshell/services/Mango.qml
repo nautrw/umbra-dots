@@ -9,6 +9,7 @@ Singleton {
     property var tagStates: ({
     })
     property string focusedWindowTitle: ""
+    property string focusedWindowAppID: ""
 
     function switchTag(n) {
         tagSwitchProc.command = ["mmsg", "dispatch", "view," + n.toString()];
@@ -30,6 +31,7 @@ Singleton {
                 try {
                     const client = JSON.parse(data);
                     root.focusedWindowTitle = client.title || client.name || "";
+                    root.focusedWindowAppID = client.appid || "";
                 } catch (e) {
                     console.warn("Window parsing error:", e);
                 }

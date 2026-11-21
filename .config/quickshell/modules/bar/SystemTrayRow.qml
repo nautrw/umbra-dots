@@ -16,8 +16,8 @@ Row {
 
             required property var modelData
 
-            implicitWidth: 20
-            implicitHeight: 20
+            implicitWidth: 24
+            implicitHeight: 24
 
             QsMenuAnchor {
                 id: trayMenu
@@ -31,10 +31,10 @@ Row {
             Image {
                 anchors.centerIn: parent
                 source: trayItem.modelData.icon
-                width: 20
-                height: 20
-                sourceSize.width: 50
-                sourceSize.height: 50
+                width: 24
+                height: 24
+                sourceSize.width: 64
+                sourceSize.height: 64
                 fillMode: Image.PreserveAspectFit
             }
 
