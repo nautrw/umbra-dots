@@ -75,16 +75,32 @@ Variants {
                 Layout.fillWidth: true
                 Layout.preferredWidth: 1
 
-                SystemTrayRow {
+                RowLayout{
                     anchors.right: parent.right
                     anchors.verticalCenter: parent.verticalCenter
-                    anchors.rightMargin: Appearance.margin
+                    spacing: 0
+
+                    SystemTrayRow {
+                    }
+
+                    Text {
+                        text: `Volume: ${Math.round(Audio.volume * 100)}`
+                        color: Appearance.foreground
+                        font.pixelSize: Appearance.fontSize
+
+                        WheelHandler {
+                            acceptedDevices: PointerDevice.Mouse | PointerDevice.TouchPad
+                            onWheel: (event) => {
+                                if (event.angleDelta.y > 0) {
+                                    Audio.incrementVolume()
+                                } else {
+                                    Audio.decrementVolume()
+                                }
+                            }
+                        }
+                    }
                 }
-
             }
-
         }
-
     }
-
 }
