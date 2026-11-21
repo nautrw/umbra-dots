@@ -73,7 +73,6 @@ Item {
                 }
             }
         }
-    }
 
     WheelHandler {
         target: null
@@ -96,5 +95,6 @@ Item {
 
             Mango.switchTag(nextTag)
         }
+    }
     }
 }
