@@ -35,33 +35,52 @@ Variants {
             anchors.fill: parent
             spacing: 0
 
-            // WORKSPACES
-            WorkspacesRow {
-                Layout.leftMargin: Appearance.margin
-            }
-
-            WindowTitleRow {}
-
-            // FOCUSED WINDOW TITLE
-
-            // RIGHT SPACER
+            // LEFT SECTION
             Item {
                 Layout.fillWidth: true
+                Layout.preferredWidth: 1
+
+                Row {
+                    spacing: 4
+                    anchors.left: parent.left
+                    anchors.verticalCenter: parent.verticalCenter
+                    anchors.leftMargin: Appearance.margin
+
+                    WorkspacesRow {
+                    }
+
+                    WindowTitleRow {
+                    }
+
+                }
+
             }
 
-            SystemTrayRow {
-            }
-
-            RowLayout {
-                Layout.rightMargin: Appearance.margin
+            // CENTER SECTION
+            Item {
+                Layout.fillWidth: true
+                Layout.preferredWidth: 1
 
                 Text {
-                    id: clockTime
-
-                    text: Qt.formatDateTime(clock.date, "hh:mm MM/dd/yyyy")
+                    anchors.centerIn: parent
+                    text: Qt.formatDateTime(clock.date, "ddd MMM d hh:mm")
                     font.pixelSize: Appearance.fontSize
                     color: Appearance.foreground
                 }
+
+            }
+
+            // RIGHT SECTION
+            Item {
+                Layout.fillWidth: true
+                Layout.preferredWidth: 1
+
+                SystemTrayRow {
+                    anchors.right: parent.right
+                    anchors.verticalCenter: parent.verticalCenter
+                    anchors.rightMargin: Appearance.margin
+                }
+
             }
 
         }

@@ -14,6 +14,5 @@ Singleton {
     readonly property color foreground: "#f6f5f4"
     readonly property color muted: "#C0BFBC"
     readonly property color subtle: "#9A9996"
-
     readonly property int margin: 10
 }

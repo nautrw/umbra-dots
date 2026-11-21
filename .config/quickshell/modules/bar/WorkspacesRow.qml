@@ -12,7 +12,6 @@ Item {
 
     implicitWidth: workspaceRow.implicitWidth
     implicitHeight: workspaceRow.implicitHeight
-
     Layout.fillWidth: false
     Layout.preferredWidth: implicitWidth
 

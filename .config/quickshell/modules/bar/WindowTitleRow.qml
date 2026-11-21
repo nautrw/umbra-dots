@@ -13,26 +13,20 @@ RowLayout {
     Image {
         Layout.preferredWidth: source != "" ? 24 : 0
         Layout.preferredHeight: 24
-
         source: {
-            const entry = DesktopEntries.heuristicLookup(
-                Mango.focusedWindowAppID
-            );
-
-            return entry
-                ? Quickshell.iconPath(entry.icon)
-                : "";
+            const entry = DesktopEntries.heuristicLookup(Mango.focusedWindowAppID);
+            return entry ? Quickshell.iconPath(entry.icon) : "";
         }
         sourceSize.width: 24
         sourceSize.height: 24
-
         fillMode: Image.PreserveAspectFit
         visible: source !== "" && Mango.focusedWindowTitle !== ""
     }
 
     Text {
-        text: Utils.truncateText(Mango.focusedWindowTitle, 75)
+        text: Utils.truncateText(Mango.focusedWindowTitle, 25)
         color: Appearance.foreground
         font.pixelSize: Appearance.fontSize
     }
+
 }
