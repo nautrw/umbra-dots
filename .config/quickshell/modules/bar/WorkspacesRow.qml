@@ -10,10 +10,11 @@ Item {
     property var monitorTags: Mango.tagStates[modelData.name] || ({
     })
 
-    Layout.fillWidth: true
-    Layout.preferredWidth: 1
     implicitWidth: workspaceRow.implicitWidth
     implicitHeight: workspaceRow.implicitHeight
+
+    Layout.fillWidth: false
+    Layout.preferredWidth: implicitWidth
 
     Row {
         id: workspaceRow

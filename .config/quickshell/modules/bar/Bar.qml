@@ -41,10 +41,10 @@ Variants {
 
             // FOCUSED WINDOW TITLE
             Text {
+                Layout.leftMargin: 10
                 text: Utils.truncateText(Mango.focusedWindowTitle, 75)
                 color: Appearance.foreground
                 font.pixelSize: Appearance.fontSize
-                Layout.alignment: Qt.AlignVCenter
             }
 
             // RIGHT SPACER
