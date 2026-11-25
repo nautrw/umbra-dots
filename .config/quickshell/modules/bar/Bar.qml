@@ -63,7 +63,7 @@ Variants {
 
                 Text {
                     anchors.centerIn: parent
-                    text: Qt.formatDateTime(clock.date, "ddd MMM d hh:mm")
+                    text: `${Qt.formatDateTime(clock.date, "ddd MMM d hh:mm")} · ${MprisController.activeTrack?.title} – ${MprisController.activeTrack.artist}`
                     font.pixelSize: Appearance.fontSize
                     color: Appearance.foreground
                 }
