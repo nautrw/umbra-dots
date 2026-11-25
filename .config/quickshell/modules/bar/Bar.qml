@@ -79,6 +79,7 @@ Variants {
                     anchors.right: parent.right
                     anchors.verticalCenter: parent.verticalCenter
                     spacing: Appearance.margin
+                    anchors.rightMargin: Appearance.margin
 
                     SystemTrayRow {
                     }
