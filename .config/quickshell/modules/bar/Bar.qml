@@ -78,14 +78,15 @@ Variants {
                 RowLayout{
                     anchors.right: parent.right
                     anchors.verticalCenter: parent.verticalCenter
-                    spacing: 0
+                    spacing: Appearance.margin
 
                     SystemTrayRow {
                     }
 
                     Text {
-                        text: `Volume: ${Math.round(Audio.volume * 100)}`
+                        text: `${Icons.speakerHigh} ${Math.round(Audio.value * 100)}`
                         color: Appearance.foreground
+                        font.family: "Phosphor-Bold"
                         font.pixelSize: Appearance.fontSize
 
                         WheelHandler {
