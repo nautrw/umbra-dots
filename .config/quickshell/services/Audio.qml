@@ -16,7 +16,7 @@ Singleton {
     }
 
     readonly property bool ready: sink?.ready ?? false
-    readonly property real volume: sink?.audio?.volume ?? 0
+    readonly property real value: sink?.audio?.volume ?? 0
 
     function incrementVolume() {
         const currentVolume = Audio.value;
