@@ -11,11 +11,11 @@ install_core() {
     log_info "Installing core packages..."
 
     user_ask_exec paru -S --needed \
-        mangowm kitty rofi rofi-calc mangobar wl-clipboard \
+        mangowm kitty rofi rofi-calc quickshell wl-clipboard \
         grim slurp wlogout xorg-xwayland swaylock \
         dunst swayidle copyq wtype ttf-roboto \
-        ttf-roboto-slab maplemono-nf \
-        ttf-nerd-fonts-symbols || return 1
+        ttf-roboto-slab maplemono-nf ttf-phosphor-icons \
+        ttf-nerd-fonts-symbols playerctl || return 1
 
     local configs=(
         mango kitty mangobar rofi wlogout dunst fontconfig
