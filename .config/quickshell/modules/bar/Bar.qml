@@ -61,13 +61,20 @@ Variants {
                 Layout.fillWidth: true
                 Layout.preferredWidth: 1
 
-                Text {
+                Row {
                     anchors.centerIn: parent
-                    text: `${Qt.formatDateTime(clock.date, "ddd MMM d hh:mm")} · ${Utils.truncateText(MprisController.activeTrack?.title, 25)} – ${Utils.truncateText(MprisController.activeTrack.artist, 25)}`
-                    font.pixelSize: Appearance.fontSize
-                    color: Appearance.foreground
-                }
+                    spacing: Appearance.margin
 
+                    Text {
+                        text: `${Qt.formatDateTime(clock.date, "ddd MMM d hh:mm")}`
+                        font.pixelSize: Appearance.fontSize
+                        color: Appearance.foreground
+                    }
+
+                    MusicStatus {
+                        anchors.verticalCenter: parent.verticalCenter
+                    }
+                }
             }
 
             // RIGHT SECTION
