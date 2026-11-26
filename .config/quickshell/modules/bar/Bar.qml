@@ -41,7 +41,7 @@ Variants {
                 Layout.preferredWidth: 1
 
                 Row {
-                    spacing: 4
+                    spacing: Appearance.margin
                     anchors.left: parent.left
                     anchors.verticalCenter: parent.verticalCenter
                     anchors.leftMargin: Appearance.margin
