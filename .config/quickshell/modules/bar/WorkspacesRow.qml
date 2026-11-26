@@ -30,17 +30,26 @@ Item {
                 property var tagObj: workspacesContainer.monitorTags[(index + 1).toString()] || null
                 property bool isActive: tagObj ? tagObj.active : false
                 property bool isUrgent: tagObj ? tagObj.urgent : false
+                // property bool isUrgent: true
                 property bool isHovered: false
 
                 width: 22
                 height: 21
                 radius: 3
                 color: {
-                    if (isActive | isHovered)
-                        return Appearance.elevated;
-
-                    if (isUrgent)
-                        return Appearance.accent;
+                    if (isUrgent & isHovered) {
+                        return Appearance.redHover
+                    } else if (isUrgent & isActive) {
+                        return Appearance.redActive
+                    } else if (isUrgent) {
+                        return Appearance.red
+                    } else if (isActive & isHovered) {
+                        return Appearance.accentHover
+                    } else if (isActive) {
+                        return Appearance.accent
+                    } else if (isHovered) {
+                        return Appearance.surfaceHover 
+                    }
 
                     return Appearance.surface;
                 }
