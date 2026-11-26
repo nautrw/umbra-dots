@@ -30,12 +30,13 @@ Item {
                 property var tagObj: workspacesContainer.monitorTags[(index + 1).toString()] || null
                 property bool isActive: tagObj ? tagObj.active : false
                 property bool isUrgent: tagObj ? tagObj.urgent : false
+                property bool isHovered: false
 
                 width: 22
                 height: 21
                 radius: 3
                 color: {
-                    if (isActive)
+                    if (isActive | isHovered)
                         return Appearance.elevated;
 
                     if (isUrgent)
@@ -49,6 +50,12 @@ Item {
                     text: index + 1
                     color: Appearance.foreground
                     font.pixelSize: Appearance.fontSize
+                }
+
+                HoverHandler {
+                    onHoveredChanged: {
+                        wsDelegate.isHovered = hovered;
+                    }
                 }
 
                 MouseArea {
