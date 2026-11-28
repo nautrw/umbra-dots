@@ -9,7 +9,7 @@ import qs.services
 Item {
     id: musicStatusItem
 
-    visible: MprisController.activePlayer?.isPlaying ?? false
+    visible: MprisController.activePlayer ?? false
 
     implicitWidth: musicRow.implicitWidth
     implicitHeight: musicRow.implicitHeight
