@@ -51,5 +51,6 @@ Singleton {
 
     readonly property int fontSize: 16
     readonly property string fontFamily: "sans"
-    readonly property int margin: 10
+    readonly property int margin: 8
+    readonly property int radius: 8
 }

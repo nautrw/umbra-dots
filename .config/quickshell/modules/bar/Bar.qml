@@ -60,6 +60,7 @@ Variants {
             Item {
                 Layout.fillWidth: true
                 Layout.preferredWidth: 1
+                Layout.fillHeight: true
 
                 Row {
                     anchors.centerIn: parent
@@ -69,6 +70,7 @@ Variants {
                         text: `${Qt.formatDateTime(clock.date, "ddd MMM d hh:mm")}`
                         font.pixelSize: Appearance.fontSize
                         color: Appearance.foreground
+                        anchors.verticalCenter: parent.verticalCenter
                     }
 
                     MusicStatus {

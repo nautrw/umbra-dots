@@ -56,6 +56,17 @@ Singleton {
 		}
 	}
 
+	// position doesnt update automatically
+	Timer {
+		running: root.isPlaying
+		interval: 1000
+		repeat: true
+		onTriggered: {
+			if (root.activePlayer)
+				root.activePlayer.positionChanged();
+		}
+	}
+
 	Connections {
 		target: activePlayer
 
